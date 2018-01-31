@@ -60,7 +60,7 @@ and open the template in the editor.
     <script>
         function fillTimeField(makeId,defaultText,target,maxValue)
         {
-            var temp = "<select id='"+makeId+"' name='rcp'><option value='"+(maxValue+1)+"'>"+defaultText+"</option>";
+            var temp = "<select id='"+makeId+"' name='rcp'><option value='-1'>"+defaultText+"</option>";
             for (var i = 0; i <= maxValue; i++)
             {
                 if(i < 10)
