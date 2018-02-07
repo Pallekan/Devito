@@ -12,7 +12,7 @@ and open the template in the editor.
     </head>
     <body style="background-color: white; height: 97.5vh; width: 97.5vw">
         <div id='id_customer_order_view' style="height: 100%">
-            <div id="orderInfoFields" style="width: 100%; height: 20%">
+            <div id="orderInfoFields" style="width: 100%; height: 30%">
                 <table>
                     <tr>
                         <td>
@@ -21,7 +21,7 @@ and open the template in the editor.
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" id="orderInfoTo" placeholder="Till"><input type="number" placeholder="Antal">
+                            <input type="text" id="orderInfoTo" placeholder="Till"><input id="orderInfoCount" type="number" placeholder="Antal">
                         </td>
                     </tr>
                     <tr>
@@ -32,16 +32,21 @@ and open the template in the editor.
                             <span id="makeMinuteOptions">
                                 
                             </span>
-                            <button>Nu!</button><button><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
+                            <button onclick="setNowPoint()">Nu!</button><button><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span id="errorNotice" style="color: red"></span>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div id="orderMap" style="width: 100%; height: 60%">
+            <div id="orderMap" style="width: 100%; height: 50%">
                 The map goes here.
             </div>
             <div id="orderButtons" align="center" style="width: 100%; height: 20%;">
-                <button style="alignment-baseline: central; font-size: 15vh; text-align: center; margin: auto; width: 80%; height: 90%" onclick="transition('id_customer_order_view','id_customer_wait_view'); startTaxiClock();">Beställ</button>
+                <button style="alignment-baseline: central; font-size: 15vh; text-align: center; margin: auto; width: 80%; height: 90%" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Beställ</button>
             </div>
         </div>
         <div id="id_customer_wait_view" style='display: none; height: 100%'>
@@ -66,7 +71,7 @@ and open the template in the editor.
             <div id="waitButtons" align="center" style="width: 100%; height: 30%;">
                 <button id="idPayNow" style="alignment-baseline: central; font-size: 9vh; text-align: center; margin: auto; width: 80%; height: 65%" onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala nu</button><br>
                 <span id="idPaymentDone" style="font-size: 10vh; width: 80%; height: 65%; display: none">Betalning genomförd.</span>
-                <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="transition('id_customer_wait_view','id_customer_order_view'); document.getElementById('idPayNow').style.display = 'block'; document.getElementById('idPaymentDone').style.display = 'none';">Avbryt resa</button>
+                <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="transition('id_customer_wait_view','id_customer_order_view'); document.getElementById('idPayNow').style.display = 'block'; document.getElementById('idPaymentDone').style.display = 'none'; clearInterval(taxiWaitCycle);">Avbryt resa</button>
             </div>
         </div>
         <div id="id_customer_pay_view" style='display: none; height: 100%'>
@@ -96,15 +101,60 @@ and open the template in the editor.
     
     <script>
         var taxiWaitCycle = null;
+        function moveAndLaunch(arg1,arg2)
+        {
+            transition(arg1,arg2);
+            startTaxiClock();
+            document.getElementById('errorNotice').innerHTML = '';
+        }
+        function setNowPoint()
+        {
+            var date = new Date();
+            if(date.getMinutes() > 54)
+            {
+                document.getElementById("orderHourOptions").value = date.getHours()+1;
+                document.getElementById("orderMinuteOptions").value = "0"+(date.getMinutes()+5-60);
+            }
+            else
+            {
+                document.getElementById("orderHourOptions").value = date.getHours();
+                document.getElementById("orderMinuteOptions").value = date.getMinutes()+5;
+            }
+        }
+        function onlyPermitIfFilledIn(fun,arg1,arg2)
+        {
+            if(document.getElementById('orderInfoFrom').value == "")
+            {
+                document.getElementById("errorNotice").innerHTML = "Ogiltig avrese-plats. Vänligen skriv in en giltig upplockningsplats.";
+                return;
+            }
+            if(document.getElementById('orderInfoTo').value == "")
+            {
+                document.getElementById("errorNotice").innerHTML = "Ogiltig destination. Vänligen skriv in en giltig destination.";
+                return;
+            }
+            if(document.getElementById('orderInfoCount').value == "" || document.getElementById("orderInfoCount").value < 1)
+            {
+                document.getElementById("errorNotice").innerHTML = "Ogiltigt antal. Vänligen skriv in ett giltigt antal passagerare.";
+                return;
+            }
+            var curDate = new Date();
+            if(curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value)))
+            {
+                document.getElementById("errorNotice").innerHTML = "Ogiltig tid. Vänligen skriv in en giltig upplockningstid.";
+                return;
+            }
+            fun(arg1,arg2);
+        }
         function transition(from,to)
         {
             document.getElementById(from).style.display='none';
             document.getElementById(to).style.display='block';
-            if(taxiWaitCycle != null)
-            {
-                clearInterval(taxiWaitCycle);
-                taxiWaitCycle = null;
-            }
+            //if(taxiWaitCycle != null)
+            //{
+            //    clearInterval(taxiWaitCycle);
+            //    taxiWaitCycle = null;
+            //}
         }
         function showTaxiDetails()
         {
@@ -126,7 +176,7 @@ and open the template in the editor.
             {
                 if(i < 10)
                 {
-                    temp += "<option value='0"+i+"'>0"+i+"</option>";
+                    temp += "<option value='"+i+"'>0"+i+"</option>";
                 }
                 else
                 {
