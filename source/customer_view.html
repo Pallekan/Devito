@@ -6,15 +6,9 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="windows-1252">
+        <title>TAXI DeVito</title>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-            function transition(from,to){
-                document.getElementById(from).style.display='none';
-                document.getElementById(to).style.display='block';
-            }
-        </script>
     </head>
     <body style="background-color: white; height: 97.5vh; width: 97.5vw">
         <div id='id_customer_order_view' style="height: 100%">
@@ -22,7 +16,7 @@ and open the template in the editor.
                 <table>
                     <tr>
                         <td>
-                            <input type="text" id="orderInfoFrom" placeholder="Från"><button>Här</button>
+                            <input type="text" id="orderInfoFrom" placeholder="FrÃ¥n"><button>HÃ¤r</button>
                         </td>
                     </tr>
                     <tr>
@@ -38,7 +32,7 @@ and open the template in the editor.
                             <span id="makeMinuteOptions">
                                 
                             </span>
-                            <button>Nu!</button><button><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg"></button>
+                            <button>Nu!</button><button><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
                         </td>
                     </tr>
                 </table>
@@ -47,17 +41,84 @@ and open the template in the editor.
                 The map goes here.
             </div>
             <div id="orderButtons" align="center" style="width: 100%; height: 20%;">
-                <button style="alignment-baseline: central; font-size: 15vh; text-align: center; margin: auto; width: 80%; height: 90%" onclick="transition('id_customer_order_view','id_customer_wait_view')">Beställ</button>
+                <button style="alignment-baseline: central; font-size: 15vh; text-align: center; margin: auto; width: 80%; height: 90%" onclick="transition('id_customer_order_view','id_customer_wait_view'); startTaxiClock();">BestÃ¤ll</button>
             </div>
         </div>
         <div id="id_customer_wait_view" style='display: none; height: 100%'>
-            Vänta på taxi-vy<button onclick="transition('id_customer_wait_view','id_customer_order_view')">Beställ</button><button onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala</button>
+            <div id="idTaxiInfo" style="display: none; position: absolute; height: 60%; width: 80%; top: 25%; bottom: 15%; left: 10%; right: 10%; background-color: yellow">
+                <div style="background-color: white; width: 95%; height: 95%; left: 2.5%; top: 2.5%; position: absolute; text-align: left; font-size: 3vw">
+                    <div style="font-size: 4vw; text-align: center">Taxiinformation</div>
+                    FÃ¶rare: <span id="idInfoDriver"></span><br>
+                    Registreringsnummer: <span id="idInfoLicense"></span><br>
+                    Biltyp: <span id="idInfoType"></span><br>
+                    Specialutrustning: <span id="idInfoSpecials"></span><br>
+                    
+                </div>
+            </div>
+            <div id="waitTaxiTable" style="width: 100%; height: 20%; font-size: 4vh; text-align: center">
+                Din taxi anlÃ¤nder om...<br>
+                <div style="font-size: 6vh" id="taxiClockSpace"></div>
+                <button id="idMoreInfoButton" style="font-size: 4vh" onclick="showTaxiDetails()">Mer information</button>
+            </div>
+            <div id="waitMap" style="width: 100%; height: 50%">
+                The map goes here.
+            </div>
+            <div id="waitButtons" align="center" style="width: 100%; height: 30%;">
+                <button id="idPayNow" style="alignment-baseline: central; font-size: 9vh; text-align: center; margin: auto; width: 80%; height: 65%" onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala nu</button><br>
+                <span id="idPaymentDone" style="font-size: 10vh; width: 80%; height: 65%; display: none">Betalning genomfÃ¶rd.</span>
+                <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="transition('id_customer_wait_view','id_customer_order_view'); document.getElementById('idPayNow').style.display = 'block'; document.getElementById('idPaymentDone').style.display = 'none';">Avbryt resa</button>
+            </div>
         </div>
         <div id="id_customer_pay_view" style='display: none; height: 100%'>
-            Betala-vy<button onclick="transition('id_customer_pay_view','id_customer_wait_view')">Vänta</button>
+            <div style="width: 100%; height: 70%">
+                <select onchange="summonAppropriatePayFields()" id="idPaymentSwitch">
+                    <option value="Default">VÃ¤lj betalningssÃ¤tt</option>
+                    <option value="Visa">Visa</option>
+                    <option value="Mastercard">MasterCard</option>
+                    <option value="Paypal">PayPal</option>
+                </select>
+                <div id="payFieldVisa" align="center" style="width: 100%; height: 90%; display: none">
+                    Handle Visa here.
+                </div>
+                <div id="payFieldMastercard" align="center" style="width: 100%; height: 90%; display: none">
+                    <input type="text" placeholder="card number"><br>
+                    <input type="number" placeholder="CVC-code"><br>
+                </div>
+                <div id="payFieldPaypal" align="center" style="width: 100%; height: 90%; display: none">
+                    Handle PayPal here.
+                </div>
+            </div>
+            <div id="payButtons" align="center" style="width: 100%; height: 30%;">
+                <button style="alignment-baseline: central; font-size: 9vh; text-align: center; margin: auto; width: 80%; height: 65%" onclick="transition('id_customer_pay_view','id_customer_wait_view'); document.getElementById('idPayNow').style.display = 'none'; document.getElementById('idPaymentDone').style.display = 'block';">Betala</button><br>
+                <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="transition('id_customer_pay_view','id_customer_wait_view')">Avbryt betalning</button>
+            </div>
         </div>
     
     <script>
+        var taxiWaitCycle = null;
+        function transition(from,to)
+        {
+            document.getElementById(from).style.display='none';
+            document.getElementById(to).style.display='block';
+            if(taxiWaitCycle != null)
+            {
+                clearInterval(taxiWaitCycle);
+                taxiWaitCycle = null;
+            }
+        }
+        function showTaxiDetails()
+        {
+            if(document.getElementById('idTaxiInfo').style.display == 'none')
+            {
+                document.getElementById('idTaxiInfo').style.display='block';
+                document.getElementById('idMoreInfoButton').innerHTML='Mindre information';
+            }
+            else
+            {
+                document.getElementById('idTaxiInfo').style.display='none';
+                document.getElementById('idMoreInfoButton').innerHTML='Mer information';
+            }
+        }
         function fillTimeField(makeId,defaultText,target,maxValue)
         {
             var temp = "<select id='"+makeId+"' name='rcp'><option value='-1'>"+defaultText+"</option>";
@@ -73,7 +134,79 @@ and open the template in the editor.
                 }
             }
             document.getElementById(target).innerHTML = temp + "</select>";
-
+        }
+        function summonAppropriatePayFields()
+        {
+            var id = document.getElementById("idPaymentSwitch");
+            if(id != null)
+            {
+                document.getElementById("payFieldVisa").style.display = "none";
+                document.getElementById("payFieldMastercard").style.display = "none";
+                document.getElementById("payFieldPaypal").style.display = "none";
+                if(id.value != "Default")
+                {
+                    document.getElementById("payField"+id.value).style.display = "block";
+                }
+            }
+            //Else we have an error.
+        }
+        //Assumes that the fields are correctly filled in.
+        function startTaxiClock()
+        {
+            var curDate = new Date();
+            var selectedHour = document.getElementById("orderHourOptions").value;
+            var selectedMinute = document.getElementById("orderMinuteOptions").value;
+            console.log(selectedHour+""+selectedMinute);
+            selectedHour -= curDate.getHours();
+            selectedMinute -= curDate.getMinutes();
+            if(selectedMinute < 0)
+            {
+                selectedMinute += 60;
+                selectedHour--;
+            }
+            console.log(selectedHour+""+selectedMinute);
+            document.getElementById("taxiClockSpace").innerHTML = selectedHour+":"+selectedMinute+":00";
+            taxiWaitCycle = setInterval(tickTaxiClock,1000);
+        }
+        function tickTaxiClock()
+        {
+            var curClock = document.getElementById("taxiClockSpace").innerHTML.split(":");
+            if(Number(curClock[2]) > 0)
+            {
+                curClock[2] = (Number(curClock[2])-1)+"";
+                if(Number(curClock[2] < 10))
+                {
+                    curClock[2] = "0"+curClock[2];
+                }
+            }
+            else
+            {
+                curClock[2] = "59";
+                if(Number(curClock[1]) > 0)
+                {
+                    curClock[1] = (Number(curClock[1])-1)+"";
+                    if(Number(curClock[1] < 10))
+                    {
+                        curClock[1] = "0"+curClock[1];
+                    }
+                }
+                else
+                {
+                    curClock[1] = "59";
+                    if(Number(curClock[0]) > 0)
+                    {
+                        curClock[0] = (Number(curClock[0])-1)+"";
+                    }
+                    else
+                    {
+                        document.getElementById("taxiClockSpace").innerHTML = "Nu"; 
+                        clearInterval(taxiWaitCycle);
+                        taxiWaitCycle = null;
+                        return;
+                    }
+                }
+            }
+            document.getElementById("taxiClockSpace").innerHTML = curClock.join(":");
         }
         fillTimeField("orderHourOptions","Timma","makeHourOptions",23);
         fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59);
