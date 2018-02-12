@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>TAXI DeVito</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/taxi.css">
     </head>
     <body style="background-color: white; height: 97.5vh; width: 97.5vw">
         <div id='id_customer_order_view' style="height: 100%">
@@ -32,9 +33,19 @@ and open the template in the editor.
                             <span id="makeMinuteOptions">
                                 
                             </span>
-                            <button onclick="setNowPoint()">Nu!</button><button><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
+                            <button onclick="setNowPoint()">Nu!</button><button id="behovs_knapp" onclick="document.getElementById('behov_modal').style.display='block'"><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
                         </td>
                     </tr>
+                    <div id= "behov_modal"class="modal">
+                            <div class="specialbehov_innehåll">
+                             <span class= "close_behov" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>   
+                             <form>
+                                <input type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
+                                <input type="checkbox" name="behov" value="Barnstol"> Barnvagn<br>
+                                <input type="submit" value="Välj">
+                              </form> 
+                            </div>
+                         </div>
                     <tr>
                         <td>
                             <span id="errorNotice" style="color: red"></span>
@@ -260,6 +271,8 @@ and open the template in the editor.
         }
         fillTimeField("orderHourOptions","Timma","makeHourOptions",23);
         fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59);
+
+        
     </script>
     </body>
 </html>
