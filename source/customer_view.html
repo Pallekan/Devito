@@ -36,16 +36,20 @@ and open the template in the editor.
                             <button onclick="setNowPoint()">Nu!</button><button id="behovs_knapp" onclick="document.getElementById('behov_modal').style.display='block'"><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
                         </td>
                     </tr>
-                    <div id= "behov_modal"class="modal">
-                            <div class="specialbehov_innehåll">
-                             <span class= "close_behov" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>   
-                             <form>
-                                <input type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
-                                <input type="checkbox" name="behov" value="Barnstol"> Barnvagn<br>
-                                <input type="submit" value="Välj">
-                              </form> 
-                            </div>
-                         </div>
+                    <tr>
+                        <td>
+                            <div id= "behov_modal" class="modal">
+                                <div class="specialbehov_innehåll">
+                                 <span class= "close_behov" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>   
+                                 <form>
+                                    <input type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
+                                    <input type="checkbox" name="behov" value="Barnstol"> Barnvagn<br>
+                                    <input type="submit" value="Välj">
+                                  </form> 
+                                </div>
+                             </div>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <span id="errorNotice" style="color: red"></span>
