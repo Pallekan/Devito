@@ -10,13 +10,13 @@ and open the template in the editor.
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="background-color: white; height: 97.5vh; width: 97.5vw">
+    <body style="background-color: white; height: 100vh; width: 100vw; overflow-x: hidden; overflow-y: hidden">
         <div id='id_customer_order_view' style="height: 100%">
             <div id="orderInfoFields" style="width: 100%; height: 30%">
                 <table>
                     <tr>
                         <td>
-                            <input type="text" id="orderInfoFrom" placeholder="Från"><button>Här</button>
+                            <input type="text" id="orderInfoFrom" placeholder="Från"><button onclick="document.getElementById('orderInfoFrom').value = 'Pollacksbacken'">Här</button>
                         </td>
                     </tr>
                     <tr>
@@ -53,10 +53,10 @@ and open the template in the editor.
             <div id="idTaxiInfo" style="display: none; position: absolute; height: 60%; width: 80%; top: 25%; bottom: 15%; left: 10%; right: 10%; background-color: yellow">
                 <div style="background-color: white; width: 95%; height: 95%; left: 2.5%; top: 2.5%; position: absolute; text-align: left; font-size: 3vw">
                     <div style="font-size: 4vw; text-align: center">Taxiinformation</div>
-                    Förare: <span id="idInfoDriver"></span><br>
-                    Registreringsnummer: <span id="idInfoLicense"></span><br>
-                    Biltyp: <span id="idInfoType"></span><br>
-                    Specialutrustning: <span id="idInfoSpecials"></span><br>
+                    Förare: <span id="idInfoDriver">Cave Johnson</span><br>
+                    Registreringsnummer: <span id="idInfoLicense">ABC123</span><br>
+                    Biltyp: <span id="idInfoType">Volvo v70</span><br>
+                    Specialutrustning: <span id="idInfoSpecials">Rullstol</span><br>
                     
                 </div>
             </div>
