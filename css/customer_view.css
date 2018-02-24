@@ -1,0 +1,40 @@
+ /* The Modal (background) all kod om modal 'lånad' tillsvidare från den där sidan man alltid kommer in på när man googlar...vad den nu heter*/
+
+ #behov_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    top: auto;
+    width:  80%; /* Full width */
+    height: 50%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #ffffff;
+    border-style: solid;
+} 
+
+/* Modal Content/Box */
+.specialbehov_innehåll {
+    background-color: #fefefe;
+    margin: 1%; /* 15% from the top and centered */
+    padding: 20px;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+#avbryt_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    top: auto;
+    width:  80%; /* Full width */
+    height: 50%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #ffffff;
+    border-style: solid;
+}
+
+.avbryt_innehåll {
+    background-color: #fefefe;
+    margin: 1%; /* 15% from the top and centered */
+    padding: 20px;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
