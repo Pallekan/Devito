@@ -1,9 +1,10 @@
  /* The Modal (background) all kod om modal 'lånad' tillsvidare från den där sidan man alltid kommer in på när man googlar...vad den nu heter*/
 
 .body {
+    text-align: center;
     background-color: white;
-    height: 97.5vh;
-    width: 97.5vh;
+    height: 100vh;
+    width: auto;
 }
 
 .order_view {
@@ -12,7 +13,7 @@
 
 .order_info {
     width: 100%;
-    height: 100%;
+    height: 30%;
 }
 
 .other_needs {
@@ -27,12 +28,12 @@
 }
 
 .order_map {
-    width: auto;
+    width: ;
     height: 50%;
 }
 
 .order_here {
-    align: center; /*html or css?*/
+    align-self: center; /*html or css?*/
     width: auto;
     height: 20%;
 }
