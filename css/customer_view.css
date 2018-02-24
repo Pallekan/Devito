@@ -19,44 +19,141 @@
     height: 5vh;
 }
 
-.modal {
+.other_needs_content {}
+.close_needs {}
+
+.error {
+    color: red;
+}
+
+.order_map {
+    width: auto;
+    height: 50%;
+}
+
+.order_here {
+    align: center; /*html or css?*/
+    width: auto;
+    height: 20%;
+}
+
+.order_button {
+    alignment-baseline: central;
+    font-size: 15vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 90%;
+}
+
+.wait_view {
+    display: none;
+    height: 100%
+}
+
+.taxi_info_pos {
+    display: none;
+    position: absolute;
+    height: 60%;
+    width: 80%;
+    top: 25%;
+    bottom: 15%;
+    left: 10%;
+    right: 10%;
+    background-color: yellow
+}
+
+.taxi_info_content {
+    background-color: white;
+    width: 95%;
+    height: 95%;
+    left: 2.5%;
+    top: 2.5%;
+    position: absolute;
+    text-align: left;
+    font-size: 3vw
+}
+
+.taxi_wait {
+    width: 100%;
+    height: 20%;
+    font-size: 4vh;
+    text-align: center
+}
+
+.pay_now {
+    alignment-baseline: central;
+    font-size: 9vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 65%;
+}
+
+.pay_done {
+    font-size: 10vh;
+    width: 80%;
+    height: 65%;
+    display: none;
+}
+
+.cancel {
+    alignment-baseline: central;
+    font-size: 4vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 25%;
+}
+
+.pay_field {
+    align: center;
+    width: 100%;
+    height: 90%;
+    display: none
+}
+
+.pay_confirm {
+    alignment-baseline: central;
+    font-size: 9vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 65%;
+}
+
+.pay_cancel {
+    alignment-baseline: central;
+    font-size: 4vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 25%;
+}
+
+#behov_modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 50%;
-    top: 0;
-    width: 25%; /* Full width */
+    top: auto;
+    width:  80%; /* Full width */
     height: 50%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
     background-color: #ffffff;
     border-style: solid;
 }
 
-.other_needs_content {}
-.close_needs {}
-
 /* Modal Content/Box */
-.modal_content {
+.specialbehov_innehåll {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 1%; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button
-This is not currently used
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.avbryt_innehåll {
+    background-color: #fefefe;
+    margin: 1%; /* 15% from the top and centered */
+    padding: 20px;
+    width: 80%; /* Could be more or less, depending on screen size */
 }
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-*/
