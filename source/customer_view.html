@@ -132,12 +132,12 @@ and open the template in the editor.
             if(date.getMinutes() > 54)
             {
                 document.getElementById("orderHourOptions").value = date.getHours()+1;
-                document.getElementById("orderMinuteOptions").value = "0"+(date.getMinutes()+5-60);
+                document.getElementById("orderMinuteOptions").value = "0"+(date.getMinutes()+5-60+(5-date.getMinutes()%5));
             }
             else
             {
                 document.getElementById("orderHourOptions").value = date.getHours();
-                document.getElementById("orderMinuteOptions").value = date.getMinutes()+5;
+                document.getElementById("orderMinuteOptions").value = date.getMinutes()+5+(5-date.getMinutes()%5);
             }
         }
         function onlyPermitIfFilledIn(fun,arg1,arg2)
@@ -188,10 +188,11 @@ and open the template in the editor.
                 document.getElementById('idMoreInfoButton').innerHTML='Mer information';
             }
         }
-        function fillTimeField(makeId,defaultText,target,maxValue)
+        //Precondition: input variable increment is larger than zero.
+        function fillTimeField(makeId,defaultText,target,maxValue,increment)
         {
             var temp = "<select id='"+makeId+"' name='rcp'><option value='-1'>"+defaultText+"</option>";
-            for (var i = 0; i <= maxValue; i++)
+            for (var i = 0; i <= maxValue; i += increment)
             {
                 if(i < 10)
                 {
@@ -277,19 +278,19 @@ and open the template in the editor.
             }
             document.getElementById("taxiClockSpace").innerHTML = curClock.join(":");
         }
-        fillTimeField("orderHourOptions","Timma","makeHourOptions",23);
-        fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59);
+        fillTimeField("orderHourOptions","Timma","makeHourOptions",23,1);
+        fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59,5);
         
         function avbrytResa() 
         {
         var avboka_var = confirm("Är du säker på att du vill avboka din resa? Du kan inte behålla din väntade tid")
             if (avboka_var == true)
             {
-                fillTimeField("orderHourOptions","Timma","makeHourOptions",23);
-                fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59);
+                fillTimeField("orderHourOptions","Timma","makeHourOptions",23,1);
+                fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59,5);
                 transition('id_customer_wait_view', 'id_customer_order_view');
                 clearInterval(taxiWaitCycle);
-                alert("Resa avbokad. Ha en fortsatt trevlig dag")
+                alert("Resa avbokad. Ha en fortsatt trevlig dag");
             }
         }
     </script>
