@@ -27,15 +27,14 @@ and open the template in the editor.
                             <input type="text" id="orderInfoTo" placeholder="Till"><input id="orderInfoCount" type="number" placeholder="Antal">
                         </td>
                     </tr>
-                    <tr>
+                    <tr>                        
                         <td>
-                            <span id="makeHourOptions">
-                                
+                            <button onclick="setNowPoint()">Nu!</button>
+                            <span id="makeHourOptions">    
                             </span>
                             <span id="makeMinuteOptions">
-                                
                             </span>
-                            <button onclick="setNowPoint()">Nu!</button><button id="behovs_knapp" onclick="document.getElementById('behov_modal').style.display='block'"><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
+                            <button id="behovs_knapp" onclick="document.getElementById('behov_modal').style.display='block'"><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
                         </td>
                     </tr>
                     <tr>
@@ -70,7 +69,7 @@ and open the template in the editor.
             </div>
         </div>
         <div id="id_customer_wait_view" style='display: none; height: 100%'>
-            <div id="idTaxiInfo" style="display: none; position: absolute; height: 60%; width: 80%; top: 25%; bottom: 15%; left: 10%; right: 10%; background-color: yellow">
+            <div id="idTaxiInfo" style="display: none; position: absolute; height: 45%; width: 80%; top: 25%; bottom: 15%; left: 10%; right: 10%; background-color: yellow">
                 <div style="background-color: white; width: 95%; height: 95%; left: 2.5%; top: 2.5%; position: absolute; text-align: left; font-size: 3vw">
                     <div style="font-size: 4vw; text-align: center">Taxiinformation</div>
                     Förare: <span id="idInfoDriver">Cave Johnson</span><br>
@@ -89,10 +88,10 @@ and open the template in the editor.
                 The map goes here.
             </div>
             <div id="waitButtons" align="center" style="width: 100%; height: 30%;">
-                <button id="idPayNow" style="alignment-baseline: central; font-size: 9vh; text-align: center; margin: auto; width: 80%; height: 65%" onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala nu</button><br>
+                <button id="idPayNow" style="alignment-baseline: central; font-size: 9vh; text-align: center; margin: auto; width: 80%; height: 60%" onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala nu</button><br>
                 <span id="idPaymentDone" style="font-size: 10vh; width: 80%; height: 65%; display: none">Betalning genomförd.</span>
-                <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="transition('id_customer_wait_view','id_customer_order_view'); document.getElementById('idPayNow').style.display = 'block'; document.getElementById('idPaymentDone').style.display = 'none'; clearInterval(taxiWaitCycle);">Avbryt resa</button>
-            </div>
+                <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="avbrytResa();">Avbryt resa</button>
+            </div>   
         </div>
         <div id="id_customer_pay_view" style='display: none; height: 100%'>
             <div style="width: 100%; height: 70%">
@@ -280,8 +279,19 @@ and open the template in the editor.
         }
         fillTimeField("orderHourOptions","Timma","makeHourOptions",23);
         fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59);
-
         
+        function avbrytResa() 
+        {
+        var avboka_var = confirm("Är du säker på att du vill avboka din resa? Du kan inte behålla din väntade tid")
+            if (avboka_var == true)
+            {
+                fillTimeField("orderHourOptions","Timma","makeHourOptions",23);
+                fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59);
+                transition('id_customer_wait_view', 'id_customer_order_view');
+                clearInterval(taxiWaitCycle);
+                alert("Resa avbokad. Ha en fortsatt trevlig dag")
+            }
+        }
     </script>
     </body>
 </html>
