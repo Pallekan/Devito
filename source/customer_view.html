@@ -9,43 +9,45 @@ and open the template in the editor.
         <title>TAXI DeVito</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../css/taxi.css">
+        <link rel="stylesheet" type="text/css" href="../css/customer_view.css">
     </head>
-    <body style="background-color: white; height: 97.5vh; width: 97.5vw">
-        <div id='id_customer_order_view' style="height: 100%">
-            <div id="orderInfoFields" style="width: 100%; height: 30%">
+    <body class="body">
+        <div id='id_customer_order_view' class="order_view">
+            <div id="orderInfoFields" class="order_info">
                 <table>
                     <tr>
                         <td>
-                            <input type="text" id="orderInfoFrom" placeholder="Från"><button>Här</button>
+                            <input type="text" id="orderInfoFrom" placeholder="Från">
+                            <button>Här</button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" id="orderInfoTo" placeholder="Till"><input id="orderInfoCount" type="number" placeholder="Antal">
+                            <input type="text" id="orderInfoTo" placeholder="Till">
+                            <input id="orderInfoCount" type="number" placeholder="Antal">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <span id="makeHourOptions">
-                                
-                            </span>
-                            <span id="makeMinuteOptions">
-                                
-                            </span>
-                            <button onclick="setNowPoint()">Nu!</button><button id="behovs_knapp" onclick="document.getElementById('behov_modal').style.display='block'"><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
+                            <span id="makeHourOptions"></span>
+                            <span id="makeMinuteOptions"></span>
+                            <button onclick="setNowPoint()">Nu!</button>
+                            <button id="behovs_knapp" onclick="document.getElementById('behov_modal').style.display='block'">
+                                <img class="other_needs" alt="Failed to load icon" src="../resources/placeholder.jpg">
+                                Specialbehov
+                            </button>
                         </td>
                     </tr>
-                    <div id= "behov_modal"class="modal">
-                            <div class="specialbehov_innehåll">
-                             <span class= "close_behov" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>   
-                             <form>
+                    <div id= "behov_modal" class="modal">
+                        <div class="specialbehov_innehåll">
+                            <span class= "close_needs" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>
+                            <form>
                                 <input type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
                                 <input type="checkbox" name="behov" value="Barnstol"> Barnvagn<br>
                                 <input type="submit" value="Välj">
-                              </form> 
-                            </div>
-                         </div>
+                            </form>
+                        </div>
+                    </div>
                     <tr>
                         <td>
                             <span id="errorNotice" style="color: red"></span>
@@ -68,7 +70,7 @@ and open the template in the editor.
                     Registreringsnummer: <span id="idInfoLicense"></span><br>
                     Biltyp: <span id="idInfoType"></span><br>
                     Specialutrustning: <span id="idInfoSpecials"></span><br>
-                    
+
                 </div>
             </div>
             <div id="waitTaxiTable" style="width: 100%; height: 20%; font-size: 4vh; text-align: center">
@@ -109,7 +111,7 @@ and open the template in the editor.
                 <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="transition('id_customer_pay_view','id_customer_wait_view')">Avbryt betalning</button>
             </div>
         </div>
-    
+
     <script>
         var taxiWaitCycle = null;
         function moveAndLaunch(arg1,arg2)
@@ -260,7 +262,7 @@ and open the template in the editor.
                     }
                     else
                     {
-                        document.getElementById("taxiClockSpace").innerHTML = "Nu"; 
+                        document.getElementById("taxiClockSpace").innerHTML = "Nu";
                         clearInterval(taxiWaitCycle);
                         taxiWaitCycle = null;
                         return;
@@ -272,7 +274,7 @@ and open the template in the editor.
         fillTimeField("orderHourOptions","Timma","makeHourOptions",23);
         fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59);
 
-        
+
     </script>
     </body>
 </html>
