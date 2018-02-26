@@ -9,75 +9,79 @@ and open the template in the editor.
         <title>TAXI DeVito</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../css/taxi.css">
+        <link rel="stylesheet" type="text/css" href="../css/customer_view.css">
     </head>
-    <body style="background-color: white; height: 100vh; width: 100vw; overflow-x: hidden; overflow-y: hidden">
-        <div id='id_customer_order_view' style="height: 100%">
-            <div id="orderInfoFields" style="width: 100%; height: 30%">
+    <body class="body">
+        <div id='id_customer_order_view' class="order_view">
+            <div id="orderInfoFields" class="order_info">
                 <table>
                     <tr>
                         <td>
-                            <input type="text" id="orderInfoFrom" placeholder="Från"><button onclick="document.getElementById('orderInfoFrom').value = 'Pollacksbacken'">Här</button>
+                            <input type="text" id="orderInfoFrom" placeholder="Från">
+                            <button onclick="document.getElementById('orderInfoFrom').value = 'Pollacksbacken'">
+                                Här
+                            </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" id="orderInfoTo" placeholder="Till"><input id="orderInfoCount" type="number" placeholder="Antal">
+                            <input type="text" id="orderInfoTo" placeholder="Till">
+                            <input id="orderInfoCount" type="number" placeholder="Antal">
                         </td>
                     </tr>
                     <tr>                        
                         <td>
                             <button onclick="setNowPoint()">Nu!</button>
-                            <span id="makeHourOptions">    
-                            </span>
-                            <span id="makeMinuteOptions">
-                            </span>
-                            <button id="behovs_knapp" onclick="document.getElementById('behov_modal').style.display='block'"><img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">Specialbehov</button>
+                            <span id="makeHourOptions"></span>
+                            <span id="makeMinuteOptions"></span>
+                            <button id="behovs_knapp" onclick="document.getElementById('behov_modal').style.display='block'">
+                                <img style="height: 5vh" alt="Failed to load icon" src="../resources/placeholder.jpg">
+                                Specialbehov
+                            </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div id= "behov_modal" class="modal">
                                 <div class="specialbehov_innehåll">
-                                 <span class= "close_behov" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>   
-                                 <form>
-                                    <input type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
-                                    <input type="checkbox" name="behov" value="Barnvagn"> Barnvagn<br>
-                                    <input type="checkbox" name="behov" value="Barnstol"> Barnstol<br>
-                                    <input type="checkbox" name="behov" value="Stort bagage"> Stort bagage<br>
-                                    <input type="checkbox" name="behov" value="Husdjur"> Husdjur<br>
-                                    <input type="submit" value="Välj">
-                                  </form> 
+                                    <span class="close_behov" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>
+                                    <form>
+                                        <input type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
+                                        <input type="checkbox" name="behov" value="Barnvagn"> Barnvagn<br>
+                                        <input type="checkbox" name="behov" value="Barnstol"> Barnstol<br>
+                                        <input type="checkbox" name="behov" value="Stort bagage"> Stort bagage<br>
+                                        <input type="checkbox" name="behov" value="Husdjur"> Husdjur<br>
+                                        <input type="submit" value="Välj">
+                                    </form>
                                 </div>
-                             </div>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <span id="errorNotice" style="color: red"></span>
+                            <span id="errorNotice" class="error"></span>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div id="orderMap" style="width: 100%; height: 50%">
+            <div id="orderMap" class="order_map">
                 The map goes here.
             </div>
-            <div id="orderButtons" align="center" style="width: 100%; height: 20%;">
-                <button style="alignment-baseline: central; font-size: 15vh; text-align: center; margin: auto; width: 80%; height: 90%" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Beställ</button>
+            <div id="orderButtons" class="order_here">
+                <button class="order_button" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Beställ</button>
             </div>
         </div>
-        <div id="id_customer_wait_view" style='display: none; height: 100%'>
-            <div id="idTaxiInfo" style="display: none; position: absolute; height: 45%; width: 80%; top: 25%; bottom: 15%; left: 10%; right: 10%; background-color: yellow">
-                <div style="background-color: white; width: 95%; height: 95%; left: 2.5%; top: 2.5%; position: absolute; text-align: left; font-size: 3vw">
+        <div id="id_customer_wait_view" class="wait_view">
+            <div id="idTaxiInfo" class="taxi_info_pos">
+                <div class="taxi_info_content">
                     <div style="font-size: 4vw; text-align: center">Taxiinformation</div>
                     Förare: <span id="idInfoDriver">Cave Johnson</span><br>
                     Registreringsnummer: <span id="idInfoLicense">ABC123</span><br>
                     Biltyp: <span id="idInfoType">Volvo v70</span><br>
                     Specialutrustning: <span id="idInfoSpecials">Rullstol</span><br>
-                    
                 </div>
             </div>
-            <div id="waitTaxiTable" style="width: 100%; height: 20%; font-size: 4vh; text-align: center">
+            <div id="waitTaxiTable" class="taxi_wait">
                 Din taxi anländer om...<br>
                 <div style="font-size: 6vh" id="taxiClockSpace"></div>
                 <button id="idMoreInfoButton" style="font-size: 4vh" onclick="showTaxiDetails()">Mer information</button>
@@ -86,10 +90,10 @@ and open the template in the editor.
                 The map goes here.
             </div>
             <div id="waitButtons" align="center" style="width: 100%; height: 30%;">
-                <button id="idPayNow" style="alignment-baseline: central; font-size: 9vh; text-align: center; margin: auto; width: 80%; height: 60%" onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala nu</button><br>
-                <span id="idPaymentDone" style="font-size: 10vh; width: 80%; height: 65%; display: none">Betalning genomförd.</span>
-                <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="avbrytResa();">Avbryt resa</button>
-            </div>   
+                <button id="idPayNow" class="pay_now" onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala nu</button><br>
+                <span id="idPaymentDone" class="pay_done">Betalning genomförd.</span>
+                <button class="cancel" onclick="avbrytResa();">Avbryt resa</button>
+            </div>
         </div>
         <div id="id_customer_pay_view" style='display: none; height: 100%'>
             <div style="width: 100%; height: 70%">
@@ -99,23 +103,23 @@ and open the template in the editor.
                     <option value="Mastercard">MasterCard</option>
                     <option value="Paypal">PayPal</option>
                 </select>
-                <div id="payFieldVisa" align="center" style="width: 100%; height: 90%; display: none">
+                <div id="payFieldVisa" class="pay_field">
                     Handle Visa here.
                 </div>
-                <div id="payFieldMastercard" align="center" style="width: 100%; height: 90%; display: none">
+                <div id="payFieldMastercard" class="pay_field">
                     <input type="text" placeholder="card number"><br>
                     <input type="number" placeholder="CVC-code"><br>
                 </div>
-                <div id="payFieldPaypal" align="center" style="width: 100%; height: 90%; display: none">
+                <div id="payFieldPaypal" class="pay_field">
                     Handle PayPal here.
                 </div>
             </div>
             <div id="payButtons" align="center" style="width: 100%; height: 30%;">
-                <button style="alignment-baseline: central; font-size: 9vh; text-align: center; margin: auto; width: 80%; height: 65%" onclick="transition('id_customer_pay_view','id_customer_wait_view'); document.getElementById('idPayNow').style.display = 'none'; document.getElementById('idPaymentDone').style.display = 'block';">Betala</button><br>
-                <button style="alignment-baseline: central; font-size: 4vh; text-align: center; margin: auto; width: 80%; height: 25%" onclick="transition('id_customer_pay_view','id_customer_wait_view')">Avbryt betalning</button>
+                <button class="pay_confirm" onclick="transition('id_customer_pay_view','id_customer_wait_view'); document.getElementById('idPayNow').style.display = 'none'; document.getElementById('idPaymentDone').style.display = 'block';">Betala</button><br>
+                <button class="pay_cancel" onclick="transition('id_customer_pay_view','id_customer_wait_view')">Avbryt betalning</button>
             </div>
         </div>
-    
+
     <script>
         var taxiWaitCycle = null;
         function moveAndLaunch(arg1,arg2)
@@ -266,7 +270,7 @@ and open the template in the editor.
                     }
                     else
                     {
-                        document.getElementById("taxiClockSpace").innerHTML = "Nu"; 
+                        document.getElementById("taxiClockSpace").innerHTML = "Nu";
                         clearInterval(taxiWaitCycle);
                         taxiWaitCycle = null;
                         return;

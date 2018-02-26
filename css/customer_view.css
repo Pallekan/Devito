@@ -1,6 +1,138 @@
  /* The Modal (background) all kod om modal 'lånad' tillsvidare från den där sidan man alltid kommer in på när man googlar...vad den nu heter*/
 
- #behov_modal {
+.body {
+    text-align: center;
+    background-color: white;
+    height: 100vh;
+    width: auto;
+}
+
+.order_view {
+    height: 100%;
+}
+
+.order_info {
+    width: 100%;
+    height: 30%;
+}
+
+.other_needs {
+    height: 5vh;
+}
+
+.other_needs_content {}
+.close_needs {}
+
+.error {
+    color: red;
+}
+
+.order_map {
+    width: ;
+    height: 50%;
+}
+
+.order_here {
+    align-self: center; /*html or css?*/
+    width: auto;
+    height: 20%;
+}
+
+.order_button {
+    alignment-baseline: central;
+    font-size: 15vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 90%;
+}
+
+.wait_view {
+    display: none;
+    height: 100%
+}
+
+.taxi_info_pos {
+    display: none;
+    position: absolute;
+    height: 60%;
+    width: 80%;
+    top: 25%;
+    bottom: 15%;
+    left: 10%;
+    right: 10%;
+    background-color: yellow
+}
+
+.taxi_info_content {
+    background-color: white;
+    width: 95%;
+    height: 95%;
+    left: 2.5%;
+    top: 2.5%;
+    position: absolute;
+    text-align: left;
+    font-size: 3vw
+}
+
+.taxi_wait {
+    width: 100%;
+    height: 20%;
+    font-size: 4vh;
+    text-align: center
+}
+
+.pay_now {
+    alignment-baseline: central;
+    font-size: 9vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 65%;
+}
+
+.pay_done {
+    font-size: 10vh;
+    width: 80%;
+    height: 65%;
+    display: none;
+}
+
+.cancel {
+    alignment-baseline: central;
+    font-size: 4vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 25%;
+}
+
+.pay_field {
+    align: center;
+    width: 100%;
+    height: 90%;
+    display: none
+}
+
+.pay_confirm {
+    alignment-baseline: central;
+    font-size: 9vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 65%;
+}
+
+.pay_cancel {
+    alignment-baseline: central;
+    font-size: 4vh;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 25%;
+}
+
+#behov_modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -10,7 +142,7 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: #ffffff;
     border-style: solid;
-} 
+}
 
 /* Modal Content/Box */
 .specialbehov_innehåll {
@@ -18,18 +150,6 @@
     margin: 1%; /* 15% from the top and centered */
     padding: 20px;
     width: 80%; /* Could be more or less, depending on screen size */
-}
-
-#avbryt_modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    top: auto;
-    width:  80%; /* Full width */
-    height: 50%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: #ffffff;
-    border-style: solid;
 }
 
 .avbryt_innehåll {
