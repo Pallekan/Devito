@@ -283,8 +283,7 @@ and open the template in the editor.
         
         function avbrytResa() 
         {
-        var avboka_var = confirm("Är du säker på att du vill avboka din resa? Du kan inte behålla din väntade tid")
-            if (avboka_var == true)
+            if (confirm("Är du säker på att du vill avboka din resa? Du kan inte behålla din väntade tid"))
             {
                 fillTimeField("orderHourOptions","Timma","makeHourOptions",23,1);
                 fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59,5);
