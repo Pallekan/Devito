@@ -31,7 +31,7 @@
             if(date.getMinutes() > 54)
             {
                 document.getElementById("orderHourOptions").value = date.getHours()+1;
-                document.getElementById("orderMinuteOptions").value = "0"+(date.getMinutes()+5-60+(5-date.getMinutes()%5));
+                document.getElementById("orderMinuteOptions").value = (date.getMinutes()+5-60+(5-date.getMinutes()%5));
             }
             else
             {
