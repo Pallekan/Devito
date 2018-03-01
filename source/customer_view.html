@@ -40,15 +40,15 @@ and open the template in the editor.
                     <tr>
                         <td>
                             <div id= "behov_modal" class="modal">
-                                <div class="specialbehov_innehåll">
+                                <div class="specialbehov_innehåll" onsubmit="document.getElementById('behov_modal').style.display='none'; alert('Specialbehov '+getSpecials()+' registrerade.')">
                                  <span class= "close_behov" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>   
                                  <form>
-                                    <input type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
-                                    <input type="checkbox" name="behov" value="Barnvagn"> Barnvagn<br>
-                                    <input type="checkbox" name="behov" value="Barnstol"> Barnstol<br>
-                                    <input type="checkbox" name="behov" value="Stort bagage"> Stort bagage<br>
-                                    <input type="checkbox" name="behov" value="Husdjur"> Husdjur<br>
-                                    <input type="submit" value="Välj">
+                                    <input class="behov_alternativ" type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
+                                    <input class="behov_alternativ" type="checkbox" name="behov" value="Barnvagn"> Barnvagn<br>
+                                    <input class="behov_alternativ" type="checkbox" name="behov" value="Barnstol"> Barnstol<br>
+                                    <input class="behov_alternativ" type="checkbox" name="behov" value="Stort bagage"> Stort bagage<br>
+                                    <input class="behov_alternativ" type="checkbox" name="behov" value="Husdjur"> Husdjur<br>
+                                    <input class="behov_alternativ" type="submit" value="Välj">
                                   </form> 
                                 </div>
                              </div>
@@ -65,7 +65,7 @@ and open the template in the editor.
                 The map goes here.
             </div>
             <div id="orderButtons" align="center" style="width: 100%; height: 20%;">
-                <button style="alignment-baseline: central; font-size: 15vh; text-align: center; margin: auto; width: 80%; height: 90%" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Beställ</button>
+                <button style="alignment-baseline: central; font-size: 10vh; text-align: center; margin: auto; width: 80%; height: 90%" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Beställ</button>
             </div>
         </div>
         <div id="id_customer_wait_view" style='display: none; height: 100%'>

@@ -3,7 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+        
+        
+        function getSpecials()
+        {
+            var str = "";
+            var tmp = document.getElementsByClassName('behov_alternativ');
+            for(var i = 0; i < tmp.length; ++i)
+            {
+                if(tmp[i].checked)
+                {
+                    str += tmp[i].value +", ";
+                }
+            }
+            return str.substr(0,str.length-2);
+        }
         var taxiWaitCycle = null;
         function moveAndLaunch(arg1,arg2)
         {
