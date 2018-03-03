@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>DeVito Driver</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../common/common.css">
+        <script src="../common/common.js"></script>
+    </head>
+    <body>
+        <div id="id_driver_login" style='height: 100%'>
+             Login screen<br>
+            <button onclick="transition('id_driver_login','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
+            <button onclick="transition('id_driver_login','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
+            <button onclick="transition('id_driver_login','id_driver_break')">DEBUG: Transition to break screen</button><br>
+        </div>
+        <div id="id_driver_waiting" style='display: none; height: 100%'>
+            Waiting for customer screen<br>
+            <button onclick="transition('id_driver_waiting','id_driver_login')">DEBUG: Transition to login screen</button><br>
+            <button onclick="transition('id_driver_waiting','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
+            <button onclick="transition('id_driver_waiting','id_driver_break')">DEBUG: Transition to break screen</button><br>
+        </div>
+        <div id="id_driver_has_customer" style='display: none; height: 100%'>
+            Has customer screen<br>
+            <button onclick="transition('id_driver_has_customer','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
+            <button onclick="transition('id_driver_has_customer','id_driver_login')">DEBUG: Transition to login screen</button><br>
+            <button onclick="transition('id_driver_has_customer','id_driver_break')">DEBUG: Transition to break screen</button><br>
+        </div>
+        <div id="id_driver_break" style='display: none; height: 100%'>
+            Break screen<br>
+            <button onclick="transition('id_driver_break','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
+            <button onclick="transition('id_driver_break','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
+            <button onclick="transition('id_driver_break','id_driver_login')">DEBUG: Transition to login screen</button><br>
+        </div>
+    </body>
+</html>
