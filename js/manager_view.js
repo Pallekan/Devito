@@ -5,17 +5,16 @@
  */
 
 var myIO = io();
+//var myData = new Data();
 var lpos = 0;
 var rpos = 0;
 var selected = null;
 var selectedID = -1;
 var selectedIsLeft = false;
-var taxiarr = new Array();
-var taskarr = new Array();
 function tmp()
 {
     myIO.on("makeOrder",function(data){
-        taskarr[lpos] = data;
+    //    myData.addOrder(data);
         addItem(true,data.from+"-"+data.to+": "+data.time);
         console.log(data);
     });
