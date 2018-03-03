@@ -48,6 +48,18 @@ app.get('/js/manager_view.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'js/manager_view.js'));
 });
 
+app.get('/js/customer_node.js', function (req, res) {
+	  res.sendFile(path.join(__dirname, 'js/customer_node.js'));
+	});
+
+	app.get('/js/driver_node.js', function (req, res) {
+	  res.sendFile(path.join(__dirname, 'js/driver_node.js'));
+	});
+
+	app.get('/js/manager_node.js', function (req, res) {
+	  res.sendFile(path.join(__dirname, 'js/manager_node.js'));
+	});
+
 app.get('/common/common.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'common/common.js'));
 });
@@ -67,6 +79,16 @@ app.get('/css/driver_view.css', function (req, res) {
 app.get('/css/manager_view.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'css/manager_view.css'));
 });
+
+app.get('/resources/taxi.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'resources/taxi.png'));
+});
+
+
+app.get('/resources/customer.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'resources/customer.png'));
+});
+
 
 // Store data in an object to keep the global namespace clean and 
 // prepare for multiple instances of data if necessary
