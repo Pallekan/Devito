@@ -56,8 +56,8 @@ app.get('/js/customer_node.js', function (req, res) {
 	  res.sendFile(path.join(__dirname, 'js/driver_node.js'));
 	});
 
-	app.get('/js/manager_node.js', function (req, res) {
-	  res.sendFile(path.join(__dirname, 'js/manager_node.js'));
+	app.get('/js/dispatcher_node.js', function (req, res) {
+	  res.sendFile(path.join(__dirname, 'js/dispatcher_node.js'));
 	});
 
 app.get('/common/common.js', function (req, res) {
