@@ -3,7 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-        
+        var myIO = io();
+        function Order(from,to,time)
+        {
+            this.from = from;
+            this.to = to;
+            this.time = time;
+        }
+        function test()
+        {
+            myIO.emit("makeOrder",new Order("a","b",5));
+        }
         
         function getSpecials()
         {
@@ -31,13 +41,14 @@
             if(date.getMinutes() > 54)
             {
                 document.getElementById("orderHourOptions").value = date.getHours()+1;
-                document.getElementById("orderMinuteOptions").value = "0"+(date.getMinutes()+5-60+(5-date.getMinutes()%5));
+                document.getElementById("orderMinuteOptions").value = (date.getMinutes()+5-60+(5-date.getMinutes()%5));
             }
             else
             {
                 document.getElementById("orderHourOptions").value = date.getHours();
                 document.getElementById("orderMinuteOptions").value = date.getMinutes()+5+(5-date.getMinutes()%5);
             }
+            document.getElementById("dayOptions").value = 0;
         }
         function onlyPermitIfFilledIn(fun,arg1,arg2)
         {
@@ -57,7 +68,7 @@
                 return;
             }
             var curDate = new Date();
-            if(curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value)))
+            if((curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value))) && document.getElementById("dayOptions").value == 0)
             {
                 document.getElementById("errorNotice").innerHTML = "Ogiltig tid. Vänligen skriv in en giltig upplockningstid.";
                 return;
@@ -127,6 +138,7 @@
             var selectedMinute = document.getElementById("orderMinuteOptions").value;
             console.log(selectedHour+""+selectedMinute);
             selectedHour -= curDate.getHours();
+            selectedHour += document.getElementById("dayOptions").value*24;
             selectedMinute -= curDate.getMinutes();
             if(selectedMinute < 0)
             {
