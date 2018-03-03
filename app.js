@@ -49,11 +49,11 @@ app.get('/js/manager_view.js', function (req, res) {
 });
 
 app.get('/common/common.js', function (req, res) {
-  res.sendFile(path.join(__dirname, 'js/manager_view.js'));
+  res.sendFile(path.join(__dirname, 'common/common.js'));
 });
 
 app.get('/common/common.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'js/manager_view.js'));
+  res.sendFile(path.join(__dirname, 'common/common.css'));
 });
 
 app.get('/css/customer_view.css', function (req, res) {
@@ -61,11 +61,11 @@ app.get('/css/customer_view.css', function (req, res) {
 });
 
 app.get('/css/driver_view.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'css/customer_view.css'));
+  res.sendFile(path.join(__dirname, 'css/driver_view.css'));
 });
 
 app.get('/css/manager_view.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'css/customer_view.css'));
+  res.sendFile(path.join(__dirname, 'css/manager_view.css'));
 });
 
 // Store data in an object to keep the global namespace clean and 
