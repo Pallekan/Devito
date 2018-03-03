@@ -25,7 +25,7 @@
 }
 
 .box {
-    font-size: 3vh;
+    font-size: 22px;
 }
 
 .a {grid-column: 1 / span 4;}
@@ -50,11 +50,11 @@
 /*user-info-grid end*/
 
 .textbox {
-    width: 90%;
+    width: 100%;
 }
 
 .num {
-    width: 60%;
+    width: 80%;
 }
 
 .button2x1 {
