@@ -18,6 +18,8 @@
 
 /*user-info-grid begin*/
 .wrapper {
+    width:auto;
+    height:auto;
     display: grid;
     grid-gap: 5px;
     background-color: #ffffff;
