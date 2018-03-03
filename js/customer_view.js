@@ -1,10 +1,20 @@
-/*
+/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
+        var myIO = io();
+        function Order(from,to,time)
+        {
+            this.from = from;
+            this.to = to;
+            this.time = time;
+        }
+        function test()
+        {
+            myIO.emit("makeOrder",new Order("a","b",5));
+        }
+        
         function getSpecials()
         {
             var str = "";
@@ -31,35 +41,36 @@
             if(date.getMinutes() > 54)
             {
                 document.getElementById("orderHourOptions").value = date.getHours()+1;
-                document.getElementById("orderMinuteOptions").value = "0"+(date.getMinutes()+5-60+(5-date.getMinutes()%5));
+                document.getElementById("orderMinuteOptions").value = (date.getMinutes()+5-60+(5-date.getMinutes()%5));
             }
             else
             {
                 document.getElementById("orderHourOptions").value = date.getHours();
                 document.getElementById("orderMinuteOptions").value = date.getMinutes()+5+(5-date.getMinutes()%5);
             }
+            document.getElementById("dayOptions").value = 0;
         }
         function onlyPermitIfFilledIn(fun,arg1,arg2)
         {
             if(document.getElementById('orderInfoFrom').value == "")
             {
-                document.getElementById("errorNotice").innerHTML = "Ogiltig avrese-plats. Vï¿½nligen skriv in en giltig upplockningsplats.";
+                document.getElementById("errorNotice").innerHTML = "Ogiltig avrese-plats. Vänligen skriv in en giltig upplockningsplats.";
                 return;
             }
             if(document.getElementById('orderInfoTo').value == "")
             {
-                document.getElementById("errorNotice").innerHTML = "Ogiltig destination. Vï¿½nligen skriv in en giltig destination.";
+                document.getElementById("errorNotice").innerHTML = "Ogiltig destination. Vänligen skriv in en giltig destination.";
                 return;
             }
             if(document.getElementById('orderInfoCount').value == "" || document.getElementById("orderInfoCount").value < 1)
             {
-                document.getElementById("errorNotice").innerHTML = "Ogiltigt antal. Vï¿½nligen skriv in ett giltigt antal passagerare.";
+                document.getElementById("errorNotice").innerHTML = "Ogiltigt antal. Vänligen skriv in ett giltigt antal passagerare.";
                 return;
             }
             var curDate = new Date();
-            if(curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value)))
+            if((curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value))) && document.getElementById("dayOptions").value == 0)
             {
-                document.getElementById("errorNotice").innerHTML = "Ogiltig tid. Vï¿½nligen skriv in en giltig upplockningstid.";
+                document.getElementById("errorNotice").innerHTML = "Ogiltig tid. Vänligen skriv in en giltig upplockningstid.";
                 return;
             }
             fun(arg1,arg2);
@@ -127,6 +138,7 @@
             var selectedMinute = document.getElementById("orderMinuteOptions").value;
             console.log(selectedHour+""+selectedMinute);
             selectedHour -= curDate.getHours();
+            selectedHour += document.getElementById("dayOptions").value*24;
             selectedMinute -= curDate.getMinutes();
             if(selectedMinute < 0)
             {
@@ -168,7 +180,7 @@
                     }
                     else
                     {
-                        document.getElementById("taxiClockSpace").innerHTML = "Nu";
+                        document.getElementById("taxiClockSpace").innerHTML = "Nu"; 
                         clearInterval(taxiWaitCycle);
                         taxiWaitCycle = null;
                         return;
@@ -179,10 +191,10 @@
         }
         fillTimeField("orderHourOptions","Timma","makeHourOptions",23,1);
         fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59,5);
-
-        function avbrytResa()
+        
+        function avbrytResa() 
         {
-            if (confirm("ï¿½r du sï¿½ker pï¿½ att du vill avboka din resa? Du kan inte behï¿½lla din vï¿½ntade tid"))
+            if (confirm("Är du säker på att du vill avboka din resa? Du kan inte behålla din väntade tid"))
             {
                 fillTimeField("orderHourOptions","Timma","makeHourOptions",23,1);
                 fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59,5);

@@ -18,6 +18,8 @@
 
 /*user-info-grid begin*/
 .wrapper {
+    width:auto;
+    height:auto;
     display: grid;
     grid-gap: 5px;
     background-color: #ffffff;
@@ -50,11 +52,11 @@
 /*user-info-grid end*/
 
 .textbox {
-    width: 90%;
+    width: 100%;
 }
 
 .num {
-    width: 60%;
+    width: 80%;
 }
 
 .button2x1 {
@@ -64,10 +66,12 @@
 .button1x1{
 
 }
-
 .other_needs {
-    max-width: 25%
+    height: 5vh;
 }
+
+.other_needs_content {}
+.close_needs {}
 
 .error {
     color: red;
@@ -85,8 +89,8 @@
 }
 
 .order_button {
-    alignment-baseline: right;
-    font-size: 12vh;
+    alignment-baseline: central;
+    font-size: 15vh;
     text-align: center;
     margin: auto;
     width: 80%;
