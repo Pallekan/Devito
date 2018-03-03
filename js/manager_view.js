@@ -54,29 +54,3 @@ function selectItem(id,isLeft)
     }
 }
 
-function connectSelections(id,isLeft)
-{
-    //tmp
-    changeSelection(id,isLeft);
-}
-
-function changeSelection(id,isLeft)
-{
-    selectedIsLeft = isLeft;
-    selectedID = id;
-    if(selected != null)
-    {
-        selected.style.backgroundColor = "white";
-    }
-    var tmpStr;
-    if(isLeft)
-    {
-        tmpStr = "tbl"+id;
-    }
-    else
-    {
-        tmpStr = "tbr"+id;
-    }
-    selected = document.getElementById(tmpStr);
-    selected.style.backgroundColor = "lightgreen";
-}

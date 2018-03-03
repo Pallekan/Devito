@@ -11,15 +11,13 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../common/common.css">
         <link rel="stylesheet" type="text/css" href="../css/manager_view.css">
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="../js/manager_view.js"></script>
-        <script src="../common/common.js" defer></script>
+        <script src="../common/common.js"></script>
     </head>
     <body>
         <!--<span class="padding_span">Test</span><table></table><span class="padding_span"></span><table></table><span class="padding_span"></span><span></span><span class="padding_span"></span>Test-->
         <div style='width: 40%; height: 100%'>
             <div style='height:12%'></div>
-            <div style='width:5%;'></div><div style=' background-color:black'><table class='table_outer' id="leftTable"></table></div><div style='width:10%;'></div><div style=' background-color:black'><table class='table_outer' id="rightTable"></table></div><div style='width:5%;'></div>
+            <div style='width:5%;'></div><div style=' background-color:black'><table class='table_outer'><tr><td class='table_inner_entry'>Table1</td></tr></table></div><div style='width:10%;'></div><div style=' background-color:black'><table class='table_outer'><tr><td class='table_inner_entry'>Table2</td></tr></table></div><div style='width:5%;'></div>
         </div>
         <div style='width: 5%;float:right; height: 100%'></div>
         <div style='width: 55%;float:right; height: 100%'>
@@ -27,6 +25,5 @@ and open the template in the editor.
             <div style='height:70%; width:100%;background-color: black;'></div>
             <div style='height:10%; width:100%;'></div>
         </div>
-        <script>addItem(true,"hello");addItem(true,"test");addItem(false,"test");</script>
     </body>
 </html>
