@@ -7,22 +7,13 @@ and open the template in the editor.
 <html>
     <head>
         <title>TAXI DeVito</title>
-        <meta charset="windows-1252">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--<link rel="stylesheet" type="text/css" href="../css/taxi.css">  -->
+        <link rel="stylesheet" type="text/css" href="../css/taxi.css">
         <link rel="stylesheet" type="text/css" href="../common/common.css">
         <script src="../common/common.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/customer_view.css">
-        <script src="/socket.io/socket.io.js" defer></script>
-        <script src="/js/customer_view.js" defer></script>
-        <script src="/js/customer_node.js" defer></script>
-  		<script src="/vue/vue.js"></script>
-  		<script src="/leaflet/leaflet.js"></script>
-  		<script src="/esri-leaflet/esri-leaflet.js"></script> 
-  		<script src="/esri-leaflet-geocoder/esri-leaflet-geocoder.js"></script> 
-    	<link rel="stylesheet" href="leaflet/leaflet.css">
-  		<link rel="stylesheet" href="/esri-leaflet-geocoder/esri-leaflet-geocoder.css">
-  	</head>
+    </head>
     <body class="body">
 
         <!--######################### Customer Order View #########################-->
@@ -104,16 +95,13 @@ and open the template in the editor.
                 </div>
 
                 <span id="errorNotice" class="error"></span>
+
             </div>
-          
-            <div id="page" class="order_map">
-                <div id="my-map" class="order_map">
-                
-            	  </div>
+            <div id="orderMap" class="order_map">
+                The map goes here.
             </div>
-          
             <div id="orderButtons" class="order_here">
-                <button class="order_button" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Best�ll</button>
+                <button class="order_button" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Beställ</button>
             </div>
         </div>
 
@@ -124,14 +112,14 @@ and open the template in the editor.
             <div id="idTaxiInfo" class="taxi_info_pos">
                 <div class="taxi_info_content">
                     <div style="font-size: 4vw; text-align: center">Taxiinformation</div>
-                    F�rare: <span id="idInfoDriver">Cave Johnson</span><br>
+                    Förare: <span id="idInfoDriver">Cave Johnson</span><br>
                     Registreringsnummer: <span id="idInfoLicense">ABC123</span><br>
                     Biltyp: <span id="idInfoType">Volvo v70</span><br>
                     Specialutrustning: <span id="idInfoSpecials">Rullstol</span><br>
                 </div>
             </div>
             <div id="waitTaxiTable" class="taxi_wait">
-                Din taxi anl�nder om...<br>
+                Din taxi anländer om...<br>
                 <div style="font-size: 6vh" id="taxiClockSpace"></div>
                 <button id="idMoreInfoButton" style="font-size: 4vh" onclick="showTaxiDetails()">Mer information</button>
             </div>
@@ -140,7 +128,7 @@ and open the template in the editor.
             </div>
             <div id="waitButtons" align="center" style="width: 100%; height: 30%;">
                 <button id="idPayNow" class="pay_now" onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala nu</button><br>
-                <span id="idPaymentDone" class="pay_done">Betalning genomf�rd.</span>
+                <span id="idPaymentDone" class="pay_done">Betalning genomförd.</span>
                 <button class="cancel" onclick="avbrytResa();">Avbryt resa</button>
             </div>
         </div>
@@ -151,7 +139,7 @@ and open the template in the editor.
         <div id="id_customer_pay_view" style='display: none; height: 100%'>
             <div style="width: 100%; height: 70%">
                 <select onchange="summonAppropriatePayFields()" id="idPaymentSwitch">
-                    <option value="Default">V�lj betalningss�tt</option>
+                    <option value="Default">Välj betalningssätt</option>
                     <option value="Visa">Visa</option>
                     <option value="Mastercard">MasterCard</option>
                     <option value="Paypal">PayPal</option>
