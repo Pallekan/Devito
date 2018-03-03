@@ -16,12 +16,58 @@
     height: 30%;
 }
 
-.other_needs {
-    height: 5vh;
+/*user-info-grid begin*/
+.wrapper {
+    display: grid;
+    grid-gap: 5px;
+    background-color: #ffffff;
+    justify-content: center;
 }
 
-.other_needs_content {}
-.close_needs {}
+.box {
+    font-size: 3vh;
+}
+
+.a {grid-column: 1 / span 4;}
+.b {grid-column: 5 / span 2;}
+.c {grid-column: 7 / span 2;}
+.d {grid-column: 1 / span 4;
+    grid-row: 2;}
+.e {grid-column: 5 / span 2;
+    grid-row: 2;}
+.f {grid-column: 7 / span 2;
+    grid-row: 2;}
+.g {grid-column: 1;
+    grid-row: 3;}
+.h {grid-column: 2 / span 2;
+    grid-row: 3;}
+.i {grid-column: 4 / span 2;
+    grid-row: 3;}
+.j {grid-column: 6;
+    grid-row: 3;}
+.k {grid-column: 7 / span 2;
+    grid-row: 3;}
+/*user-info-grid end*/
+
+.textbox {
+    width: 100%;
+}
+
+.num {
+    width: 80%;
+}
+
+.button2x1 {
+
+}
+
+.button1x1{
+
+}
+
+.other_needs {
+    max-width: 25%
+}
 
 .error {
     color: red;
@@ -39,8 +85,8 @@
 }
 
 .order_button {
-    alignment-baseline: central;
-    font-size: 15vh;
+    alignment-baseline: right;
+    font-size: 12vh;
     text-align: center;
     margin: auto;
     width: 80%;

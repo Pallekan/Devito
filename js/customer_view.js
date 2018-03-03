@@ -1,10 +1,10 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-        
-        
+
+
         function getSpecials()
         {
             var str = "";
@@ -43,23 +43,23 @@
         {
             if(document.getElementById('orderInfoFrom').value == "")
             {
-                document.getElementById("errorNotice").innerHTML = "Ogiltig avrese-plats. Vänligen skriv in en giltig upplockningsplats.";
+                document.getElementById("errorNotice").innerHTML = "Ogiltig avrese-plats. Vï¿½nligen skriv in en giltig upplockningsplats.";
                 return;
             }
             if(document.getElementById('orderInfoTo').value == "")
             {
-                document.getElementById("errorNotice").innerHTML = "Ogiltig destination. Vänligen skriv in en giltig destination.";
+                document.getElementById("errorNotice").innerHTML = "Ogiltig destination. Vï¿½nligen skriv in en giltig destination.";
                 return;
             }
             if(document.getElementById('orderInfoCount').value == "" || document.getElementById("orderInfoCount").value < 1)
             {
-                document.getElementById("errorNotice").innerHTML = "Ogiltigt antal. Vänligen skriv in ett giltigt antal passagerare.";
+                document.getElementById("errorNotice").innerHTML = "Ogiltigt antal. Vï¿½nligen skriv in ett giltigt antal passagerare.";
                 return;
             }
             var curDate = new Date();
             if(curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value)))
             {
-                document.getElementById("errorNotice").innerHTML = "Ogiltig tid. Vänligen skriv in en giltig upplockningstid.";
+                document.getElementById("errorNotice").innerHTML = "Ogiltig tid. Vï¿½nligen skriv in en giltig upplockningstid.";
                 return;
             }
             fun(arg1,arg2);
@@ -168,7 +168,7 @@
                     }
                     else
                     {
-                        document.getElementById("taxiClockSpace").innerHTML = "Nu"; 
+                        document.getElementById("taxiClockSpace").innerHTML = "Nu";
                         clearInterval(taxiWaitCycle);
                         taxiWaitCycle = null;
                         return;
@@ -179,10 +179,10 @@
         }
         fillTimeField("orderHourOptions","Timma","makeHourOptions",23,1);
         fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59,5);
-        
-        function avbrytResa() 
+
+        function avbrytResa()
         {
-            if (confirm("Är du säker på att du vill avboka din resa? Du kan inte behålla din väntade tid"))
+            if (confirm("ï¿½r du sï¿½ker pï¿½ att du vill avboka din resa? Du kan inte behï¿½lla din vï¿½ntade tid"))
             {
                 fillTimeField("orderHourOptions","Timma","makeHourOptions",23,1);
                 fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59,5);
