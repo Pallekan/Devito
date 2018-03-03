@@ -68,7 +68,7 @@
                 return;
             }
             var curDate = new Date();
-            if((curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value))) && document.getElementById("dayOptions").value == 0)
+            if(((curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value))) && document.getElementById("dayOptions").value == 0) || document.getElementById("orderMinuteOptions").value == -1 || document.getElementById("orderHourOptions").value == -1)
             {
                 document.getElementById("errorNotice").innerHTML = "Ogiltig tid. Vänligen skriv in en giltig upplockningstid.";
                 return;
