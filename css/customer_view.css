@@ -66,10 +66,12 @@
 .button1x1{
 
 }
-
 .other_needs {
-    max-width: 25%
+    height: 5vh;
 }
+
+.other_needs_content {}
+.close_needs {}
 
 .error {
     color: red;
@@ -87,8 +89,8 @@
 }
 
 .order_button {
-    alignment-baseline: right;
-    font-size: 12vh;
+    alignment-baseline: central;
+    font-size: 15vh;
     text-align: center;
     margin: auto;
     width: 80%;
