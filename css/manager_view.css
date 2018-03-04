@@ -35,7 +35,6 @@ div{
     height: 30%;
     display: grid;
     grid-gap: 5px;
-    grid-color:
     grid-template-columns: 22.5% 22.5%;
     background-color: #fff000;
     justify-content: center;

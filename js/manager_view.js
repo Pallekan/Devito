@@ -47,6 +47,17 @@ function selectItem(id,isLeft)
     {
         connectSelections(id,isLeft);
     }
+    if(isLeft)
+    {
+        var item = orderArr[id];
+        document.getElementById("orderInfoBox").innerHTML = "<table><tr><td>Körningsinfo: <br>Passagerarantal: "+item.passengers+"</td></tr><tr><td>Åktid: "+item.gotime+"</td></tr><tr><td>Avrese-punkt: "+item.frompos+"</td></tr><tr><td>Destination: "+item.destpos+"</td></tr><tr><td>Specialbehov: "+item.specneeds+"</td></tr>";
+        document.getElementById("orderInfoBox").style.display = "table-cell";
+    }
+    else
+    {
+        document.getElementById("taxiInfoBox").innerHTML = "<table><tr><td>Taxi-info:</td></tr><tr><td>Förare: <span id='idInfoDriver'>Cave Johnson</span></td></tr><tr><td>Registreringsnummer: <span id='idInfoLicense'>ABC123</span></td></tr><tr><td>Biltyp: <span id='idInfoType'>Volvo v70</span></td></tr><tr><td>Specialutrustning: <span id='idInfoSpecials'>Rullstol</span>";
+        document.getElementById("taxiInfoBox").style.display = "table-cell";
+    }
 }
 function makeReadableTime(input)
 {
