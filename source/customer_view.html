@@ -87,7 +87,9 @@ and open the template in the editor.
                         </span>
                     </div>
                 </div>
-
+                <div>
+                    <span id="errorNotice" class="error"></span>
+                </div>
             </div>
 
             <div id="page" class="order_map">
@@ -97,7 +99,7 @@ and open the template in the editor.
             </div>
 
             <div id="orderButtons" class="order_here">
-                <button class="order_button" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Best�ll</button>
+                <button class="order_button" onclick="onlyPermitIfFilledIn(moveAndLaunch,'id_customer_order_view','id_customer_wait_view');">Beställ</button>
             </div>
 
         </div>
@@ -136,7 +138,7 @@ and open the template in the editor.
         <div id="id_customer_pay_view" style='display: none; height: 100%'>
             <div style="width: 100%; height: 70%">
                 <select onchange="summonAppropriatePayFields()" id="idPaymentSwitch">
-                    <option value="Default">V�lj betalningss�tt</option>
+                    <option value="Default">Välj betalningssätt</option>
                     <option value="Visa">Visa</option>
                     <option value="Mastercard">MasterCard</option>
                     <option value="Paypal">PayPal</option>
