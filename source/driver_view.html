@@ -16,18 +16,19 @@ and open the template in the editor.
         <link rel="stylesheet" href="leaflet/leaflet.css">
         <script src="/vue/vue.js"></script>
         <script src="/leaflet/leaflet.js"></script>
-        <script src="js/driver_node.js" defer></script>
+        <script src="../js/driver_node.js" defer></script>
         <link rel="stylesheet" type="text/css" href="../css/driver_view.css">
     </head>
     <body>
         <!--<button onclick="vm.quit()">Quit</button>-->
         <div id="page" style="height: 50%; width: 100%">
-                
+        </div>
+
             <div id="my-map" style="width: 99%; height: 100%"></div>
-        </div>      
+        </div>
         <div id="id_driver_login" style='height: 50%'>
             Välkommen personal<br>
-            <input type="text" placeholder="User">   
+            <input type="text" placeholder="User">
             <input type="text" placeholder="Password">
             <button onclick="transition('id_driver_login','id_driver_waiting')">Logga in</button>
 
@@ -38,9 +39,7 @@ and open the template in the editor.
             <button onclick="transition('id_driver_waiting','id_driver_login')">Logga ut</button>
 
             <div id="page" class="order_map">
-                <div id="my-map" style="height: 100%; width: 100%">
-
-            	</div>
+                <div id="my-map" style="height: 100%; width: 100%"></div>
             </div>
             <!-- The Modal -->
             <div id="myModal" class="modal">
@@ -61,7 +60,7 @@ and open the template in the editor.
                         <button id="accept-drive">Accept</button>
                         <button id="decline-drive">Decline</button>
                     </div>
-                </div>          
+                </div>
             </div>
             <div id="driveModal" class="modal">
 
@@ -78,10 +77,10 @@ and open the template in the editor.
                         <div class="modal-footer">
                             <button id="drop-drive">Släpp Körning</button>
                         </div>
-                    </div>                         
+                    </div>
                 </div>
             </div>
-        </div>            
         </div>
-    </body> 
+        </div>
+    </body>
 </html>
