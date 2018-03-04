@@ -12,19 +12,18 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="../common/common.css">
         <script src="../common/common.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script src="../js/driver_view.js"></script>
+        <script src="../js/driver_view.js" defer></script>
         <link rel="stylesheet" href="leaflet/leaflet.css">
         <script src="/vue/vue.js"></script>
         <script src="/leaflet/leaflet.js"></script>
-        <script src="js/driver_node.js" defer></script>
+        <script src="../js/driver_node.js" defer></script>
         <link rel="stylesheet" type="text/css" href="../css/driver_view.css">
     </head>
     <body>
         <!--<button onclick="vm.quit()">Quit</button>-->
         <div id="page" style="height: 50%; width: 100%">
-                
-                <div id="my-map" style="width: 99%; height: 100%"></div>
-          </div>
+            <div id="my-map" style="width: 99%; height: 100%"></div>
+        </div>
         <div id="id_driver_login" style='height: 50%'>
              Login screen<br>
             <button onclick="transition('id_driver_login','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
@@ -37,9 +36,7 @@ and open the template in the editor.
 
 
             <div id="page" class="order_map">
-                <div id="my-map" style="height: 100%; width: 100%">
-
-            	</div>
+                <div id="my-map" style="height: 100%; width: 100%"></div>
             </div>
             <!-- The Modal -->
             <div id="myModal" class="modal">
