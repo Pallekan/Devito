@@ -46,9 +46,8 @@ accept.onclick = function() {
     vm.acceptOrder(myOrder);
 }
 
-
-decline.onclick = function() {
-    socket.emit("orderTaxi", myOrder);
+function resetTaxi()
+{
     vm.quit();
     if (vm.taxiLocation === null) {
         vm.taxiLocation = L.marker(vm.pos, {icon: vm.taxiIcon, draggable: true}).addTo(vm.map);
@@ -57,6 +56,12 @@ decline.onclick = function() {
                                 latLong: vm.pos
                                 });
       }
+}
+
+
+decline.onclick = function() {
+    socket.emit("orderTaxi", myOrder);
+    resetTaxi();
     modal.style.display = "none";
 }
 
