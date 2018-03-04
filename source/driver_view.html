@@ -13,6 +13,10 @@ and open the template in the editor.
         <script src="../common/common.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="../js/driver_view.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/driver_view.css">
+        <link rel="stylesheet" type="text/css" href="../css/customer_view.css">
+        <script src="/js/driver_view.js" defer></script>
     </head>
     <body>
         <div id="id_driver_login" style='height: 100%'>
@@ -21,11 +25,39 @@ and open the template in the editor.
             <button onclick="transition('id_driver_login','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
             <button onclick="transition('id_driver_login','id_driver_break')">DEBUG: Transition to break screen</button><br>
         </div>
+
         <div id="id_driver_waiting" style='display: none; height: 100%'>
             Waiting for customer screen<br>
-            <button onclick="transition('id_driver_waiting','id_driver_login')">DEBUG: Transition to login screen</button><br>
-            <button onclick="transition('id_driver_waiting','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
-            <button onclick="transition('id_driver_waiting','id_driver_break')">DEBUG: Transition to break screen</button><br>
+            <button id="myBtn">Open Modal</button>
+
+
+            <div id="page" class="order_map">
+                <div id="my-map" style="height: 100%; width: 100%">
+
+            	</div>
+            </div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Ny körning</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Kund:    </p>
+                        <p>Från:    </p>
+                        <p>Til:     </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="accept-drive">Accept</button>
+                        <button id="decline-drive">Decline</button>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
         <div id="id_driver_has_customer" style='display: none; height: 100%'>
             Has customer screen<br>
@@ -38,6 +70,6 @@ and open the template in the editor.
             <button onclick="transition('id_driver_break','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
             <button onclick="transition('id_driver_break','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
             <button onclick="transition('id_driver_break','id_driver_login')">DEBUG: Transition to login screen</button><br>
+            </html>
         </div>
     </body>
-</html>
