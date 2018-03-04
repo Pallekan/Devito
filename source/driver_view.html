@@ -21,10 +21,8 @@ and open the template in the editor.
     </head>
     <body>
         <!--<button onclick="vm.quit()">Quit</button>-->
-        <div id="page" style="height: 50%; width: 100%">
-        </div>
 
-            <div id="my-map" style="width: 99%; height: 100%"></div>
+            <div id="my-map" style="width: 99%; height: 50%"></div>
         <div id="id_driver_login" style='height: 50%'>
             Välkommen personal<br>
             <input type="text" placeholder="User">
@@ -33,7 +31,6 @@ and open the template in the editor.
 
         </div>
         <div id="id_driver_waiting" style='display: none; height: 50%'>
-            Waiting for customer screen<br>
             <button onclick="transition('id_driver_waiting','id_driver_login');vm.quit()">Logga ut</button>
 
             <div id="page" class="order_map">
