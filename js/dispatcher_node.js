@@ -121,7 +121,8 @@ var vm = new Vue({
       var connectMarkers = L.polyline([order.fromLatLong, order.destLatLong], {color: 'blue'}).addTo(this.map);
       return {from: fromMarker, dest: destMarker, line: connectMarkers};
     },
-    assignTaxi: function (order) {
+    assignTaxi: function (order,taxiId) {
+        order.mytaxi = taxiId;
       socket.emit("taxiAssigned", order);
     }
   }
