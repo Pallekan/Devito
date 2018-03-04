@@ -17,7 +17,6 @@ and open the template in the editor.
         <script src="/vue/vue.js"></script>
         <script src="/leaflet/leaflet.js"></script>
         <script src="js/driver_node.js" defer></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../css/driver_view.css">
     </head>
     <body>
@@ -49,12 +48,14 @@ and open the template in the editor.
                 <!-- Modal content -->
                 <div class="modal-content">
                     <div class="modal-header">
+
+                        <span class="close">&times;</span>
                         <h2>Ny körning</h2>
                     </div>
                     <div class="modal-body">
-                        <p>Kund:    </p>
-                        <p>Från:    </p>
-                        <p>Til:     </p>
+                        <p>Kund:    <span id="modalKund"></span></p>
+                        <p>Från:    <span id="modalFr�n"></span></p>
+                        <p>Till:     <span id="modalTill"></span></p>
                     </div>
                     <div class="modal-footer">
                         <button id="accept-drive">Accept</button>
@@ -77,15 +78,10 @@ and open the template in the editor.
                         <div class="modal-footer">
                             <button id="drop-drive">Släpp Körning</button>
                         </div>
-                    </div>
-               
-                         
+                    </div>                         
                 </div>
             </div>
-        </div>
-        <div id="id_driver_break" style='display: none; height: 50%'>
-            Break screen<br>
-            
-            </html>
+        </div>            
         </div>
     </body> 
+</html>
