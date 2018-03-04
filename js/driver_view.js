@@ -30,7 +30,7 @@ function handleGivenOrder(order)
             tmp = order.fromLatLong;
         }
         else tmp = order.frompos;
-    document.getElementById("modalFrån").innerHTML = tmp;
+    document.getElementById("modalFrÃ¥n").innerHTML = tmp;
     if(order.destpos == "Map selection")
         {
             tmp= order.destLatLong;
