@@ -10,10 +10,11 @@ var taxiArr = new Array();
 var lpos = 0;
 var rpos = 0;
 var selected = null;
-var selectedID = -1;
+var leftID = -1;
 var selectedIsLeft = false;
 var selectedMatch = null;
-var matchID = -1;
+var rightID = -1;
+var driverMappings = new Array();
 function addItem(isLeft,text)
 {
     var item;
@@ -53,7 +54,7 @@ function ifMapSelection(isDest,order)
     {
         if(order.destpos == "Map selection")
         {
-            return order.destLatLong;
+            return "Map: order "+order.orderId;
         }
         else return order.destpos;
     }
@@ -61,7 +62,7 @@ function ifMapSelection(isDest,order)
     {
         if(order.frompos == "Map selection")
         {
-            return order.fromLatLong;
+            return "Map: order "+order.orderId;
         }
         else return order.frompos;
     }
@@ -77,13 +78,58 @@ function makeReadableTime(input)
     return tmp[0]+" "+tmp[1][0];
     */
 }
+function handleTaxiAdd(taxi)
+{
+    taxiArr[rpos] = taxi;
+    driverMappings[taxi.taxiId] = rpos; 
+    addItem(false,"Taxi "+taxi.taxiId);
+}
+function removeTaxi(taxiId)
+{
+    var myItem = document.getElementById("tbr"+driverMappings[taxiId]);
+    if(!(myItem == selected || myItem == selectedMatch))
+    {
+        myItem.style.display="none";
+    }
+    else
+    {
+        selected.style.backgroundColor="white";
+        selectedMatch.style.backgroundColor="white";
+        leftID = -1;
+        rightID = -1;
+        selected = null;
+        selectedMatch = null;
+        document.getElementById("connectButton").disabled = true;
+    }
+}
 function handleOrderAdd(order)
 {
-    addItem(true,makeReadableTime(order.gotime)+": "+ifMapSelection(true,order)+"-"+ifMapSelection(false,order));
+    orderArr[lpos] = order;
+    addItem(true,makeReadableTime(order.gotime)+": "+ifMapSelection(true,order)+" to "+ifMapSelection(false,order));
+}
+function performConnection()
+{
+    //Do stuff here.
+    
+    
+    //Selection reset.
+    selected.style.display="none";
+    selectedMatch.style.display="none";
+    leftID = -1;
+    rightID = -1;
+    selected = null;
+    selectedMatch = null;
 }
 function connectSelections(id,isLeft)
 {
-    matchID = id;
+    if(isLeft)
+    {
+        leftID = id;
+    }
+    else
+    {
+        rightID = id;
+    }
     if(selectedMatch != null)
     {
         selectedMatch.style.backgroundColor = "white";
@@ -99,12 +145,20 @@ function connectSelections(id,isLeft)
     }
     selectedMatch = document.getElementById(tmpStr);
     selectedMatch.style.backgroundColor = "pink";
+    document.getElementById("connectButton").disabled = false;
 }
 
 function changeSelection(id,isLeft)
 {
     selectedIsLeft = isLeft;
-    selectedID = id;
+    if(isLeft)
+    {
+        leftID = id;
+    }
+    else
+    {
+        rightID = id;
+    }
     if(selected != null)
     {
         selected.style.backgroundColor = "white";

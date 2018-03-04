@@ -13,27 +13,36 @@ and open the template in the editor.
         <script src="../common/common.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="../js/driver_view.js"></script>
+        <link rel="stylesheet" href="leaflet/leaflet.css">
+        <script src="/vue/vue.js"></script>
+        <script src="/leaflet/leaflet.js"></script>
+        <script src="js/driver_node.js" defer></script>
     </head>
     <body>
-        <div id="id_driver_login" style='height: 100%'>
+        <!--<button onclick="vm.quit()">Quit</button>-->
+        <div id="page" style="height: 50%; width: 100%">
+                
+                <div id="my-map" style="width: 99%; height: 100%"></div>
+          </div>
+        <div id="id_driver_login" style='height: 50%'>
              Login screen<br>
             <button onclick="transition('id_driver_login','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
             <button onclick="transition('id_driver_login','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
             <button onclick="transition('id_driver_login','id_driver_break')">DEBUG: Transition to break screen</button><br>
         </div>
-        <div id="id_driver_waiting" style='display: none; height: 100%'>
+        <div id="id_driver_waiting" style='display: none; height: 50%'>
             Waiting for customer screen<br>
             <button onclick="transition('id_driver_waiting','id_driver_login')">DEBUG: Transition to login screen</button><br>
             <button onclick="transition('id_driver_waiting','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
             <button onclick="transition('id_driver_waiting','id_driver_break')">DEBUG: Transition to break screen</button><br>
         </div>
-        <div id="id_driver_has_customer" style='display: none; height: 100%'>
+        <div id="id_driver_has_customer" style='display: none; height: 50%'>
             Has customer screen<br>
             <button onclick="transition('id_driver_has_customer','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
             <button onclick="transition('id_driver_has_customer','id_driver_login')">DEBUG: Transition to login screen</button><br>
             <button onclick="transition('id_driver_has_customer','id_driver_break')">DEBUG: Transition to break screen</button><br>
         </div>
-        <div id="id_driver_break" style='display: none; height: 100%'>
+        <div id="id_driver_break" style='display: none; height: 50%'>
             Break screen<br>
             <button onclick="transition('id_driver_break','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
             <button onclick="transition('id_driver_break','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
