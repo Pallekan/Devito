@@ -23,17 +23,19 @@ and open the template in the editor.
         <!--<button onclick="vm.quit()">Quit</button>-->
         <div id="page" style="height: 50%; width: 100%">
                 
-                <div id="my-map" style="width: 99%; height: 100%"></div>
-          </div>
+            <div id="my-map" style="width: 99%; height: 100%"></div>
+        </div>      
         <div id="id_driver_login" style='height: 50%'>
-             Login screen<br>
-            <button onclick="transition('id_driver_login','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
-            <button onclick="transition('id_driver_login','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
-            <button onclick="transition('id_driver_login','id_driver_break')">DEBUG: Transition to break screen</button><br>
+            Välkommen personal<br>
+            <input type="text" placeholder="User">   
+            <input type="text" placeholder="Password">
+            <button onclick="transition('id_driver_login','id_driver_waiting')">Logga in</button>
+
         </div>
         <div id="id_driver_waiting" style='display: none; height: 50%'>
             Waiting for customer screen<br>
-
+            <button id="myBtn">Open Modal</button>
+            <button onclick="transition('id_driver_waiting','id_driver_login')">Logga ut</button>
 
             <div id="page" class="order_map">
                 <div id="my-map" style="height: 100%; width: 100%">
@@ -46,34 +48,40 @@ and open the template in the editor.
                 <!-- Modal content -->
                 <div class="modal-content">
                     <div class="modal-header">
+
                         <span class="close">&times;</span>
                         <h2>Ny körning</h2>
                     </div>
                     <div class="modal-body">
                         <p>Kund:    <span id="modalKund"></span></p>
-                        <p>Från:    <span id="modalFr�n"></span></p>
+                        <p>Från:    <span id="modalFr�n"></span></p>
                         <p>Till:     <span id="modalTill"></span></p>
                     </div>
                     <div class="modal-footer">
                         <button id="accept-drive">Accept</button>
                         <button id="decline-drive">Decline</button>
                     </div>
-                </div>
-
+                </div>          
             </div>
+            <div id="driveModal" class="modal">
 
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                           <h2>Körning Accepterad</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p>Kund:    </p>
+                            <p>Från:    </p>
+                            <p>Til:     </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="drop-drive">Släpp Körning</button>
+                        </div>
+                    </div>                         
+                </div>
+            </div>
+        </div>            
         </div>
-        <div id="id_driver_has_customer" style='display: none; height: 50%'>
-            Has customer screen<br>
-            <button onclick="transition('id_driver_has_customer','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
-            <button onclick="transition('id_driver_has_customer','id_driver_login')">DEBUG: Transition to login screen</button><br>
-            <button onclick="transition('id_driver_has_customer','id_driver_break')">DEBUG: Transition to break screen</button><br>
-        </div>
-        <div id="id_driver_break" style='display: none; height: 50%'>
-            Break screen<br>
-            <button onclick="transition('id_driver_break','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
-            <button onclick="transition('id_driver_break','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
-            <button onclick="transition('id_driver_break','id_driver_login')">DEBUG: Transition to login screen</button><br>
-        </div>
-    </html>
-</body>
+    </body> 
+</html>
