@@ -20,6 +20,7 @@ var vm = new Vue({
       // add markers in the map for all orders
       for (var orderId in data.orders) {
         this.customerMarkers[orderId] = this.putCustomerMarkers(data.orders[orderId]);
+        handleOrderAdd(data.orders[orderId]);
       }
       // add taxi markers in the map for all taxis
       for (var taxiId in data.taxis) {
@@ -46,6 +47,7 @@ var vm = new Vue({
     socket.on('taxiOrdered', function (order) {
       this.$set(this.orders, order.orderId, order);
       this.customerMarkers[order.orderId] = this.putCustomerMarkers(order);
+      handleOrderAdd(order);
     }.bind(this));
     socket.on('orderAccepted', function (order) {
       this.$set(this.orders, order.orderId, order);
