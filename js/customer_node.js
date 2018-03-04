@@ -86,10 +86,29 @@ var vm = new Vue({
       marker.taxiId = taxi.taxiId;
       return marker;
     },
-    orderTaxi: function() {
-            socket.emit("orderTaxi", { fromLatLong: [this.fromMarker.getLatLng().lat, this.fromMarker.getLatLng().lng],
-                                       destLatLong: [this.destMarker.getLatLng().lat, this.destMarker.getLatLng().lng],
-                                       orderItems: { passengers: 1, bags: 1, animals: "doge" }
+    orderTaxi: function(psgr,specs,time,from,dest) {
+        var tmp1;
+        var tmp2;
+        try
+        {
+            tmp1 = [this.fromMarker.getLatLng().lat, this.fromMarker.getLatLng().lng];
+        }
+        catch(err)
+        {
+            tmp1 = [0,0];
+        }
+        try
+        {
+            tmp2 = [this.destMarker.getLatLng().lat, this.destMarker.getLatLng().lng];
+        }
+        catch(err)
+        {
+            tmp2 = [0,0];
+        }
+            socket.emit("orderTaxi", { fromLatLong: tmp1,
+                                       destLatLong: tmp2,
+                                       passengers: psgr,specneeds: specs,gotime: time,frompos: from,destpos: dest,
+                                       orderItems: {}
                                      });
     },
     handleClick: function (event) {
@@ -97,12 +116,14 @@ var vm = new Vue({
       if (this.destMarker === null) {
         this.destMarker = L.marker([event.latlng.lat, event.latlng.lng], {draggable: true}).addTo(this.map);
         this.destMarker.on("drag", this.moveMarker);
+        document.getElementById("orderInfoTo").value = "Map selection";
       }
       // second click sets pickup location
       else if (this.fromMarker === null) {
         this.fromMarker = L.marker(event.latlng, {icon: this.fromIcon, draggable: true}).addTo(this.map);
         this.fromMarker.on("drag", this.moveMarker);
         this.connectMarkers = L.polyline([this.fromMarker.getLatLng(), this.destMarker.getLatLng()], {color: 'blue'}).addTo(this.map);
+        document.getElementById("orderInfoFrom").value = "Map selection";
       }
     },
     moveMarker: function (event) {

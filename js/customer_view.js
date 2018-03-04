@@ -29,12 +29,38 @@
             return str.substr(0,str.length-2);
         }
         var taxiWaitCycle = null;
+        function getSpecials()
+        {
+            return null;
+        }
+        function makeTime()
+        {
+            /*
+            var curDate = new Date();
+            var selectedHour = document.getElementById("orderHourOptions").value;
+            var selectedMinute = document.getElementById("orderMinuteOptions").value;
+            selectedHour -= curDate.getHours();
+            selectedHour += document.getElementById("dayOptions").value*24;
+            selectedMinute -= curDate.getMinutes();
+            while(selectedMinute < 0)
+            {
+                selectedMinute += 60;
+                selectedHour--;
+            }
+            return [selectedHour,selectedMinute,curDate];
+            */
+           return [document.getElementById("orderHourOptions").value,document.getElementById("orderMinuteOptions").value,document.getElementById("dayOptions").value];
+        }
         function moveAndLaunch(arg1,arg2)
         {
+           /* socket.emit("orderTaxi",{fromLatLong:[this.fromMarker.getLatLng().lat,this.fromMarker.getLatLng().lng],
+            destLatLong:[this.destMarker.getLatLng().lat,this.destMarker.getLatLng().lng],
+        orderItems:{passengers: 1, bags: 1, animals: "doog"}}.bind());*/
+            vm.orderTaxi(document.getElementById("orderInfoCount").value,getSpecials(),makeTime(),document.getElementById("orderInfoTo").value,document.getElementById("orderInfoFrom").value);
             transition(arg1,arg2);
             startTaxiClock();
             document.getElementById('errorNotice').innerHTML = '';
-        }
+        };
         function setNowPoint()
         {
             var date = new Date();
@@ -68,7 +94,7 @@
                 return;
             }
             var curDate = new Date();
-            if((curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value))) && document.getElementById("dayOptions").value == 0)
+            if(((curDate.getHours() > Number(document.getElementById("orderHourOptions").value) || (curDate.getHours() == Number(document.getElementById("orderHourOptions").value) && curDate.getMinutes() > Number(document.getElementById("orderMinuteOptions").value))) && document.getElementById("dayOptions").value == 0) || document.getElementById("orderMinuteOptions").value == -1 || document.getElementById("orderHourOptions").value == -1)
             {
                 document.getElementById("errorNotice").innerHTML = "Ogiltig tid. Vänligen skriv in en giltig upplockningstid.";
                 return;
