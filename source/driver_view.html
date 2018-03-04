@@ -32,7 +32,6 @@ and open the template in the editor.
         </div>
         <div id="id_driver_waiting" style='display: none; height: 50%'>
             Waiting for customer screen<br>
-            <button id="myBtn">Open Modal</button>
 
 
             <div id="page" class="order_map">
@@ -48,9 +47,9 @@ and open the template in the editor.
                         <h2>Ny körning</h2>
                     </div>
                     <div class="modal-body">
-                        <p>Kund:    </p>
-                        <p>Från:    </p>
-                        <p>Til:     </p>
+                        <p>Kund:    <span id="modalKund"></span></p>
+                        <p>Från:    <span id="modalFr�n"></span></p>
+                        <p>Till:     <span id="modalTill"></span></p>
                     </div>
                     <div class="modal-footer">
                         <button id="accept-drive">Accept</button>
@@ -72,6 +71,6 @@ and open the template in the editor.
             <button onclick="transition('id_driver_break','id_driver_waiting')">DEBUG: Transition to wait-for-customer screen</button><br>
             <button onclick="transition('id_driver_break','id_driver_has_customer')">DEBUG: Transition to has-customer screen</button><br>
             <button onclick="transition('id_driver_break','id_driver_login')">DEBUG: Transition to login screen</button><br>
-            </html>
         </div>
-    </body>
+    </html>
+</body>
