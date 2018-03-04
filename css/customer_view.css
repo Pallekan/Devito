@@ -8,6 +8,7 @@
 }
 
 .order_view {
+    display: none;
     height: 100%;
 }
 
@@ -59,19 +60,9 @@
     width: 80%;
 }
 
-.button2x1 {
-
-}
-
-.button1x1{
-
-}
 .other_needs {
     height: 5vh;
 }
-
-.other_needs_content {}
-.close_needs {}
 
 .error {
     color: red;
@@ -186,25 +177,41 @@
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    top: auto;
-    width:  80%; /* Full width */
-    height: 50%; /* Full height */
+    top: 0;
+    left: 0;
+    width:  100%; /* Full width */
+    height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: #ffffff;
-    border-style: solid;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    /*border-style: solid;*/
 }
 
 /* Modal Content/Box */
 .specialbehov_innehåll {
     background-color: #fefefe;
-    margin: 1%; /* 15% from the top and centered */
+    margin: 1% auto; /* 15% from the top and centered */
     padding: 20px;
+    border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
 .avbryt_innehåll {
-    background-color: #fefefe;
-    margin: 1%; /* 15% from the top and centered */
-    padding: 20px;
-    width: 80%; /* Could be more or less, depending on screen size */
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.avbryt_innehåll:hover,
+.avbryt_innehåll:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Customer Login View */
+
+.login_view {
+    height: 100%
 }

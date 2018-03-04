@@ -88,6 +88,22 @@ and open the template in the editor.
                     </div>
                 </div>
 
+                <div id="behov_modal" class="modal">
+                    <div class="specialbehov_innehåll">
+                        <span class= "avbryt_innehåll" onclick="document.getElementById('behov_modal').style.display='none'"> &times;</span>
+                        <form>
+                            <input class="behov_alternativ" type="checkbox" name="behov" value="Rullstol"> Rullstol<br>
+                            <input class="behov_alternativ" type="checkbox" name="behov" value="Barnvagn"> Barnvagn<br>
+                            <input class="behov_alternativ" type="checkbox" name="behov" value="Barnstol"> Barnstol<br>
+                            <input class="behov_alternativ" type="checkbox" name="behov" value="Stort bagage"> Stort bagage<br>
+                            <input class="behov_alternativ" type="checkbox" name="behov" value="Husdjur"> Husdjur<br>
+                            <input class="behov_alternativ" type="button" value="Välj" onclick="document.getElementById('behov_modal').style.display='none'; alert('Specialbehov '+getSpecials()+' registrerade.')">
+                        </form>
+                    </div>
+                </div>
+
+                <span id="errorNotice" class="error"></span>
+
             </div>
 
             <div id="page" class="order_map">
@@ -159,7 +175,15 @@ and open the template in the editor.
         </div>
 
 
-        
+        <!--############################## Customer Login View ##############################-->
+
+        <div class="login_view" id="id_customer_login_view">
+            <input type="text" id="loginFirstNamne" placeholder="Förnamn"><br>
+            <input type="text" id="loginLastName" placeholder="Efternamn"><br>
+            <input type="text" id="loginAdress" placeholder="Adress"><br>
+            <button onclick="transition('id_customer_login_view','id_customer_order_view')">Logga in</button>
+        </div>
+
         <script src="../js/customer_view.js" defer></script>
     </body>
 </html>
