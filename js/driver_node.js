@@ -22,12 +22,12 @@ var vm = new Vue({
     }.bind(this));
     // this icon is not reactive
     this.taxiIcon = L.icon({
-      iconUrl: "img/taxi.png",
+      iconUrl: "resources/taxi.png",
       iconSize: [36,36],
       iconAnchor: [18,36]
     });
     this.fromIcon = L.icon({
-      iconUrl: "img/customer.png",
+      iconUrl: "resources/customer.png",
       iconSize: [36,50],
       iconAnchor: [19,50]
     });

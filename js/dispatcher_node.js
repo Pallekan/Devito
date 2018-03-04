@@ -25,12 +25,14 @@ var vm = new Vue({
       // add taxi markers in the map for all taxis
       for (var taxiId in data.taxis) {
         this.taxiMarkers[taxiId] = this.putTaxiMarker(data.taxis[taxiId]);
+        handleTaxiAdd(data.taxis[taxiId]);
       }
     }.bind(this));
 
     socket.on('taxiAdded', function (taxi) {
       this.$set(this.taxis, taxi.taxiId, taxi);
       this.taxiMarkers[taxi.taxiId] = this.putTaxiMarker(taxi);
+      handleTaxiAdd(taxi);
     }.bind(this));
 
     socket.on('taxiMoved', function (taxi) {
@@ -39,6 +41,7 @@ var vm = new Vue({
     }.bind(this));
 
     socket.on('taxiQuit', function (taxiId) {
+      removeTaxi(taxiId);
       Vue.delete(this.taxis, taxiId);
       this.map.removeLayer(this.taxiMarkers[taxiId]);
       Vue.delete(this.taxiMarkers, taxiId);
@@ -62,14 +65,14 @@ var vm = new Vue({
 
     // These icons are not reactive
     this.taxiIcon = L.icon({
-      iconUrl: "img/taxi.png",
+      iconUrl: "resources/taxi.png",
       iconSize: [36,36],
       iconAnchor: [18,36],
       popupAnchor: [0,-36]
     });
 
     this.fromIcon = L.icon({
-          iconUrl: "img/customer.png",
+          iconUrl: "resources/customer.png",
           iconSize: [36,50],
           iconAnchor: [19,50]
         });
