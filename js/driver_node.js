@@ -10,6 +10,7 @@ var vm = new Vue({
     map: null,
     taxiId: 0,
     taxiLocation: null,
+    pos: null,
     orders: {},
     customerMarkers: {}
   },
@@ -19,6 +20,14 @@ var vm = new Vue({
     }.bind(this));
     socket.on('currentQueue', function (data) {
       this.orders = data.orders;
+      for(var order in data.orders)
+      {
+          if(data.orders[order].mytaxi == this.taxiId)
+          {
+              handleGivenOrder(data.orders[order]);
+              console.log("test");
+          }
+      }
     }.bind(this));
     // this icon is not reactive
     this.taxiIcon = L.icon({
@@ -65,6 +74,7 @@ var vm = new Vue({
         socket.emit("addTaxi", { taxiId: this.taxiId,
                                 latLong: [event.latlng.lat, event.latlng.lng]
                                 });
+        this.pos = [event.latlng.lat, event.latlng.lng];
       }
       else {
         this.taxiLocation.setLatLng(event.latlng);
@@ -72,6 +82,7 @@ var vm = new Vue({
       }
     },
     moveTaxi: function (event) {
+        this.pos = [event.latlng.lat, event.latlng.lng];
       socket.emit("moveTaxi", { taxiId: this.taxiId,
                                 latLong: [event.latlng.lat, event.latlng.lng]
                                 });

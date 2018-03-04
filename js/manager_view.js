@@ -48,25 +48,6 @@ function selectItem(id,isLeft)
         connectSelections(id,isLeft);
     }
 }
-function ifMapSelection(isDest,order)
-{
-    if(isDest)
-    {
-        if(order.destpos == "Map selection")
-        {
-            return "Map: order "+order.orderId;
-        }
-        else return order.destpos;
-    }
-    else
-    {
-        if(order.frompos == "Map selection")
-        {
-            return "Map: order "+order.orderId;
-        }
-        else return order.frompos;
-    }
-}
 function makeReadableTime(input)
 {
     return input[0]+":"+input[1]+" - "+(new Date().getDate()+Number(input[2]));
@@ -110,7 +91,7 @@ function handleOrderAdd(order)
 function performConnection()
 {
     //Do stuff here.
-    
+    vm.assignTaxi(orderArr[leftID],taxiArr[rightID].taxiId);
     
     //Selection reset.
     selected.style.display="none";
