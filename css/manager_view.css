@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 2018-feb-24, 14:25:10
     Author     : Admin
 */
@@ -26,4 +26,24 @@ and open the template in the editor.
 
 div{
     display:inline-block;
+}
+
+.wrapper {
+    bottom: 10px;
+    left: 10px;
+    width: 45%;
+    height: 30%;
+    display: grid;
+    grid-gap: 5px;
+    grid-color:
+    grid-template-columns: 22.5% 22.5%;
+    background-color: #fff000;
+    justify-content: center;
+}
+
+.box1  {
+    grid-column: 1;
+}
+.box2 {
+    grid-column: 2;
 }
