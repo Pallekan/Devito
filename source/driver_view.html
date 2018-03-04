@@ -34,8 +34,7 @@ and open the template in the editor.
         </div>
         <div id="id_driver_waiting" style='display: none; height: 50%'>
             Waiting for customer screen<br>
-            <button id="myBtn">Open Modal</button>
-            <button onclick="transition('id_driver_waiting','id_driver_login')">Logga ut</button>
+            <button onclick="transition('id_driver_waiting','id_driver_login');vm.quit()">Logga ut</button>
 
             <div id="page" class="order_map">
                 <div id="my-map" style="height: 100%; width: 100%">
@@ -64,24 +63,22 @@ and open the template in the editor.
                 </div>          
             </div>
             <div id="driveModal" class="modal">
-
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                           <h2>Körning Accepterad</h2>
-                        </div>
-                        <div class="modal-body">
-                            <p>Kund:    </p>
-                            <p>Från:    </p>
-                            <p>Til:     </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button id="drop-drive">Släpp Körning</button>
-                        </div>
-                    </div>                         
-                </div>
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Körning Accepterad</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Kund:    <span id="modalKund2"></span></p>
+                        <p>Från:    <span id="modalFr�n2"></span></p>
+                        <p>Till:     <span id="modalTill2"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="drop-drive" onclick="releaseRide();">Släpp Körning</button>
+                        <button id="finish-drive" onclick="vm.finishOrder();resetTaxi();">K�rning klar</button>
+                    </div>
+                </div>                         
             </div>
-        </div>            
         </div>
     </body> 
 </html>
