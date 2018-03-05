@@ -107,7 +107,7 @@ var vm = new Vue({
         }
             socket.emit("orderTaxi", { fromLatLong: tmp1,
                                        destLatLong: tmp2,
-                                       passengers: psgr,specneeds: specs,gotime: time,frompos: from,destpos: dest,mytaxi:-1,
+                                       passengers: psgr,specneeds: specs,gotime: time,frompos: from,destpos: dest,mytaxi:-1,timestr:null,
                                        orderItems: {}
                                      });
     },

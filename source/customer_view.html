@@ -97,6 +97,7 @@ and open the template in the editor.
                             <input class="behov_alternativ" type="checkbox" name="behov" value="Barnstol"> Barnstol<br>
                             <input class="behov_alternativ" type="checkbox" name="behov" value="Stort bagage"> Stort bagage<br>
                             <input class="behov_alternativ" type="checkbox" name="behov" value="Husdjur"> Husdjur<br>
+                            <input class="behov_alternativ" type="checkbox" name="behov" value="Hiss"> Hiss<br>
                             <input class="behov_alternativ" type="button" value="Välj" onclick="document.getElementById('behov_modal').style.display='none'; alert('Specialbehov '+getSpecials()+' registrerade.')">
                         </form>
                     </div>
@@ -125,7 +126,7 @@ and open the template in the editor.
             <div id="idTaxiInfo" class="taxi_info_pos">
                 <div class="taxi_info_content">
                     <div style="font-size: 4vw; text-align: center">Taxiinformation</div>
-                    F�rare: <span id="idInfoDriver">Cave Johnson</span><br>
+                    Förare: <span id="idInfoDriver">Cave Johnson</span><br>
                     Registreringsnummer: <span id="idInfoLicense">ABC123</span><br>
                     Biltyp: <span id="idInfoType">Volvo v70</span><br>
                     Specialutrustning: <span id="idInfoSpecials">Rullstol</span><br>
@@ -181,7 +182,7 @@ and open the template in the editor.
             <input type="text" id="loginFirstNamne" placeholder="Förnamn"><br>
             <input type="text" id="loginLastName" placeholder="Efternamn"><br>
             <input type="text" id="loginAdress" placeholder="Adress"><br>
-            <input type="checkbox" id="färdtjänst"> Färdtjänst
+            <input type="checkbox" id="färdtjänst" onchange="hasFardtjanst = this.checked"> Färdtjänst
             <button onclick="transition('id_customer_login_view','id_customer_order_view')">Logga in</button>
         </div>
 

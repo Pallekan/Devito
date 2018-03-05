@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
         var myIO = io();
+        var hasFardtjanst = false;
         function Order(from,to,time)
         {
             this.from = from;
@@ -26,13 +27,10 @@
                     str += tmp[i].value +", ";
                 }
             }
-            return str.substr(0,str.length-2);
+            
+            return "Har färdtjänst: "+hasFardtjanst+"; "+str.substr(0,str.length-2);
         }
         var taxiWaitCycle = null;
-        function getSpecials()
-        {
-            return null;
-        }
         function makeTime()
         {
             /*
@@ -226,6 +224,7 @@
                 fillTimeField("orderMinuteOptions","Minut","makeMinuteOptions",59,5);
                 transition('id_customer_wait_view', 'id_customer_order_view');
                 clearInterval(taxiWaitCycle);
+                vm.finishOrder(vm.orderId);
                 alert("Resa avbokad. Ha en fortsatt trevlig dag");
             }
         }

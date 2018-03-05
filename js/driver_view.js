@@ -6,6 +6,7 @@
 
 
  var modal = document.getElementById('myModal');
+ var modal2 = document.getElementById('driveModal');
 
  // Get the button that opens the modal
  //var btn = document.getElementById("myBtn");
@@ -23,32 +24,34 @@ function handleGivenOrder(order)
 {
     console.log("test");
     modal.style.display = "block";
-    document.getElementById("modalKund").innerHTML = "Ja.";
+    document.getElementById("modalKund").innerHTML = order.timestr;
+    document.getElementById("modalKund2").innerHTML = order.timestr;
     var tmp;
     if(order.frompos == "Map selection")
         {
             tmp = order.fromLatLong;
         }
         else tmp = order.frompos;
-    document.getElementById("modalFrÃ¥n").innerHTML = tmp;
+    document.getElementById("modalFrån").innerHTML = tmp;
+    document.getElementById("modalFrån2").innerHTML = tmp;
     if(order.destpos == "Map selection")
         {
             tmp= order.destLatLong;
         }
         else tmp = order.destpos;
     document.getElementById("modalTill").innerHTML = tmp;
+    document.getElementById("modalTill2").innerHTML = tmp;
     myOrder = order;
 }
 
 accept.onclick = function() {
     modal.style.display = "none";
-    transition('id_driver_waiting','id_driver_has_customer');
     vm.acceptOrder(myOrder);
+    modal2.style.display = "block";
 }
 
-
-decline.onclick = function() {
-    socket.emit("orderTaxi", myOrder);
+function resetTaxi()
+{
     vm.quit();
     if (vm.taxiLocation === null) {
         vm.taxiLocation = L.marker(vm.pos, {icon: vm.taxiIcon, draggable: true}).addTo(vm.map);
@@ -57,7 +60,18 @@ decline.onclick = function() {
                                 latLong: vm.pos
                                 });
       }
+    modal2.style.display = "none";
+}
+function releaseRide()
+{
+    socket.emit("orderTaxi", myOrder);
+    resetTaxi();
     modal.style.display = "none";
+    modal2.style.display = "none";
+}
+
+decline.onclick = function() {
+    releaseRide();
 }
 
 

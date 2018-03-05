@@ -21,11 +21,8 @@ and open the template in the editor.
     </head>
     <body>
         <!--<button onclick="vm.quit()">Quit</button>-->
-        <div id="page" style="height: 50%; width: 100%">
-        </div>
 
-            <div id="my-map" style="width: 99%; height: 100%"></div>
-        </div>
+            <div id="my-map" style="width: 99%; height: 50%"></div>
         <div id="id_driver_login" style='height: 50%'>
             Välkommen personal<br>
             <input type="text" placeholder="User">
@@ -34,9 +31,7 @@ and open the template in the editor.
 
         </div>
         <div id="id_driver_waiting" style='display: none; height: 50%'>
-            Waiting for customer screen<br>
-            <button id="myBtn">Open Modal</button>
-            <button onclick="transition('id_driver_waiting','id_driver_login')">Logga ut</button>
+            <button onclick="transition('id_driver_waiting','id_driver_login');vm.quit()">Logga ut</button>
 
             <div id="page" class="order_map">
                 <div id="my-map" style="height: 100%; width: 100%"></div>
@@ -52,7 +47,7 @@ and open the template in the editor.
                         <h2>Ny körning</h2>
                     </div>
                     <div class="modal-body">
-                        <p>Kund:    <span id="modalKund"></span></p>
+                        <p>Tid:    <span id="modalKund"></span></p>
                         <p>Från:    <span id="modalFr�n"></span></p>
                         <p>Till:     <span id="modalTill"></span></p>
                     </div>
@@ -63,24 +58,22 @@ and open the template in the editor.
                 </div>
             </div>
             <div id="driveModal" class="modal">
-
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                           <h2>Körning Accepterad</h2>
-                        </div>
-                        <div class="modal-body">
-                            <p>Kund:    </p>
-                            <p>Från:    </p>
-                            <p>Til:     </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button id="drop-drive">Släpp Körning</button>
-                        </div>
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Körning Accepterad</h2>
                     </div>
-                </div>
+                    <div class="modal-body">
+                        <p>Tid:    <span id="modalKund2"></span></p>
+                        <p>Från:    <span id="modalFr�n2"></span></p>
+                        <p>Till:     <span id="modalTill2"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="drop-drive" onclick="releaseRide();">Släpp Körning</button>
+                        <button id="finish-drive" onclick="vm.finishOrder();resetTaxi();">K�rning klar</button>
+                    </div>
+                </div>    
             </div>
-        </div>
         </div>
     </body>
 </html>
