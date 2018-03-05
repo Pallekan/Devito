@@ -36,7 +36,6 @@ function addItem(isLeft,text)
     }
     item.innerHTML = item.innerHTML + "<tr><td class='table_inner_entry' id='"+tmpStr+"' onclick='selectItem("+num+","+isLeft+")'>"+text+"</td></tr>";
 }
-//1h hittills.
 function selectItem(id,isLeft)
 {
     if(selectedIsLeft == isLeft)

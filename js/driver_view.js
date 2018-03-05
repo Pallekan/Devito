@@ -24,8 +24,8 @@ function handleGivenOrder(order)
 {
     console.log("test");
     modal.style.display = "block";
-    document.getElementById("modalKund").innerHTML = "Ja.";
-    document.getElementById("modalKund2").innerHTML = "Ja.";
+    document.getElementById("modalKund").innerHTML = order.timestr;
+    document.getElementById("modalKund2").innerHTML = order.timestr;
     var tmp;
     if(order.frompos == "Map selection")
         {

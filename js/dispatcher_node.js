@@ -123,6 +123,7 @@ var vm = new Vue({
     },
     assignTaxi: function (order,taxiId) {
         order.mytaxi = taxiId;
+        order.timestr = makeReadableTime(order.gotime);
       socket.emit("taxiAssigned", order);
     }
   }
