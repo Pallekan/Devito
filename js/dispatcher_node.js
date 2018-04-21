@@ -56,6 +56,9 @@ var vm = new Vue({
       this.$set(this.orders, order.orderId, order);
     }.bind(this));
     socket.on('orderFinished', function (orderId) {
+        location.reload();
+    }.bind(this));
+    socket.on('orderFinished', function (orderId) {
       Vue.delete(this.orders, orderId);
       this.map.removeLayer(this.customerMarkers[orderId].from);
       this.map.removeLayer(this.customerMarkers[orderId].dest);

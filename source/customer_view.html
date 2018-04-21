@@ -133,12 +133,13 @@ and open the template in the editor.
                 </div>
             </div>
             <div id="waitTaxiTable" class="taxi_wait">
-                Din taxi anl�nder om...<br>
+                <div style="display:none" id="hideClock">Din taxi anl�nder om...<br>
                 <div style="font-size: 6vh" id="taxiClockSpace"></div>
-                <button id="idMoreInfoButton" style="font-size: 4vh" onclick="showTaxiDetails()">Mer information</button>
+                <button id="idMoreInfoButton" style="font-size: 4vh" onclick="showTaxiDetails()">Mer information</button></div>
+                <div style="font-size: 6vh" id="waitForCab">Letar efter taxi...</div>
             </div>
             <div id="waitMap" style="width: 100%; height: 50%">
-                The map goes here.
+                <!--The map goes here.-->
             </div>
             <div id="waitButtons" align="center" style="width: 100%; height: 30%;">
                 <button id="idPayNow" class="pay_now" onclick="transition('id_customer_wait_view','id_customer_pay_view')">Betala nu</button><br>
@@ -154,9 +155,9 @@ and open the template in the editor.
             <div style="width: 100%; height: 70%">
                 <select onchange="summonAppropriatePayFields()" id="idPaymentSwitch">
                     <option value="Default">Välj betalningssätt</option>
-                    <option value="Visa">Visa</option>
+                    <!--<option value="Visa">Visa</option>-->
                     <option value="Mastercard">MasterCard</option>
-                    <option value="Paypal">PayPal</option>
+                    <!--<option value="Paypal">PayPal</option>-->
                 </select>
                 <div id="payFieldVisa" class="pay_field">
                     Handle Visa here.

@@ -114,11 +114,17 @@ Data.prototype.addOrder = function (order) {
   return orderId;
 };
 
+Data.prototype.fixOrder = function (order) {
+  //Store the order in an "associative array" with orderId as key
+  this.orders[order.orderId] = order;
+};
+
 /*
   Just deleting the order when it's finished
 */
 Data.prototype.finishOrder = function (orderId) {
     delete this.orders[orderId];
+    console.log("Deleted1 "+orderId);
 };
 
 /*
@@ -169,6 +175,13 @@ io.on('connection', function (socket) {
     // send the orderId back to the customer who ordered
     socket.emit('orderId', orderId);
   });
+  socket.on('resetOrder', function (order) {
+    data.fixOrder(order);
+    // send updated info to all connected clients, note the use of "io" instead of "socket"
+    io.emit('taxiOrdered', order);
+    // send the orderId back to the customer who ordered
+    socket.emit('orderId', order.orderId);
+  });
   socket.on('addTaxi', function (taxi) {
     data.addTaxi(taxi);
     // send updated info to all connected clients, note the use of io instead of socket
@@ -187,6 +200,7 @@ io.on('connection', function (socket) {
   });
   socket.on('finishOrder', function (orderId) {
     data.finishOrder(orderId);
+    console.log(orderId);
     // send updated info to all connected clients, note the use of io instead of socket
     io.emit('orderFinished', orderId);
   });
