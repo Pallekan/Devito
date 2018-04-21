@@ -11,6 +11,7 @@ var vm = new Vue({
     map: null,
     fromMarker: null,
     destMarker: null,
+    clicks: 0,
     taxiMarkers: {}
   },
   created: function () {
@@ -22,6 +23,13 @@ var vm = new Vue({
     }.bind(this));
     socket.on('orderId', function (orderId) {
       this.orderId = orderId;
+    }.bind(this));
+    socket.on('orderAccepted', function (order) {
+      if(order.orderId == this.orderId)
+      {
+          document.getElementById("waitForCab").style.display = 'none';
+          document.getElementById("hideClock").style.display = 'block';
+      }
     }.bind(this));
     socket.on('taxiAdded', function (taxi) {
       this.taxiMarkers[taxi.taxiId] = this.putTaxiMarker(taxi);
@@ -111,19 +119,25 @@ var vm = new Vue({
                                        orderItems: {}
                                      });
     },
+    finishOrder: function (orderId) {
+      socket.emit("finishOrder", orderId);
+    },
     handleClick: function (event) {
       // first click sets destination
-      if (this.destMarker === null) {
+      if (this.clicks == 0) {
         this.destMarker = L.marker([event.latlng.lat, event.latlng.lng], {draggable: true}).addTo(this.map);
+        this.fromMarker = L.marker(event.latlng, {icon: this.fromIcon, draggable: true});
         this.destMarker.on("drag", this.moveMarker);
         document.getElementById("orderInfoTo").value = "Map selection";
+        this.clicks += 1;
       }
       // second click sets pickup location
-      else if (this.fromMarker === null) {
+      else if (this.clicks == 1) {
         this.fromMarker = L.marker(event.latlng, {icon: this.fromIcon, draggable: true}).addTo(this.map);
         this.fromMarker.on("drag", this.moveMarker);
         this.connectMarkers = L.polyline([this.fromMarker.getLatLng(), this.destMarker.getLatLng()], {color: 'blue'}).addTo(this.map);
         document.getElementById("orderInfoFrom").value = "Map selection";
+        this.clicks += 1;
       }
     },
     moveMarker: function (event) {

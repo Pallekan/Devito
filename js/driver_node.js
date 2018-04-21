@@ -11,6 +11,7 @@ var vm = new Vue({
     taxiId: 0,
     taxiLocation: null,
     pos: null,
+    curOrder: 0,
     orders: {},
     customerMarkers: {}
   },
@@ -24,10 +25,23 @@ var vm = new Vue({
       {
           if(data.orders[order].mytaxi == this.taxiId)
           {
+              this.curOrder = order;
               handleGivenOrder(data.orders[order]);
-              console.log("test");
           }
       }
+    }.bind(this));
+    socket.on('orderFinished', function (orderId) {
+        if(orderId == this.curOrder.orderId)
+        {
+            Vue.delete(this.orders, order.orderId);
+            this.map.removeLayer(this.customerMarkers.from);
+            this.map.removeLayer(this.customerMarkers.dest);
+            this.map.removeLayer(this.customerMarkers.line);
+            Vue.delete(this.customerMarkers);
+            resetTaxi();
+            modal.style.display = "none";
+            modal2.style.display = "none";
+        }
     }.bind(this));
     // this icon is not reactive
     this.taxiIcon = L.icon({
@@ -96,14 +110,17 @@ var vm = new Vue({
         this.customerMarkers = this.putCustomerMarkers(order);
         order.taxiIdConfirmed = this.taxiId;
         socket.emit("orderAccepted", order);
+        console.log(order);
     },
-    finishOrder: function (orderId) {
-      Vue.delete(this.orders, orderId);
+    finishOrder: function (order) {
+    console.log("Deleted4 "+order.orderId);
+      Vue.delete(this.orders, order.orderId);
       this.map.removeLayer(this.customerMarkers.from);
       this.map.removeLayer(this.customerMarkers.dest);
       this.map.removeLayer(this.customerMarkers.line);
       Vue.delete(this.customerMarkers);
-      socket.emit("finishOrder", orderId);
+      socket.emit("finishOrder", order.orderId);
+    console.log("Deleted3 "+order.orderId);
     },
     putCustomerMarkers: function (order) {
       var fromMarker = L.marker(order.fromLatLong, {icon: this.fromIcon}).addTo(this.map);

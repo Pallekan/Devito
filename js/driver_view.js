@@ -22,26 +22,28 @@
 
 function handleGivenOrder(order)
 {
-    console.log("test");
-    modal.style.display = "block";
-    document.getElementById("modalKund").innerHTML = order.timestr;
-    document.getElementById("modalKund2").innerHTML = order.timestr;
-    var tmp;
-    if(order.frompos == "Map selection")
-        {
-            tmp = order.fromLatLong;
-        }
-        else tmp = order.frompos;
-    document.getElementById("modalFrån").innerHTML = tmp;
-    document.getElementById("modalFrån2").innerHTML = tmp;
-    if(order.destpos == "Map selection")
-        {
-            tmp= order.destLatLong;
-        }
-        else tmp = order.destpos;
-    document.getElementById("modalTill").innerHTML = tmp;
-    document.getElementById("modalTill2").innerHTML = tmp;
-    myOrder = order;
+    if(order.mytaxi == vm.taxiId)
+    {
+        modal.style.display = "block";
+        document.getElementById("modalKund").innerHTML = order.timestr;
+        document.getElementById("modalKund2").innerHTML = order.timestr;
+        var tmp;
+        if(order.frompos == "Map selection")
+            {
+                tmp = order.fromLatLong;
+            }
+            else tmp = order.frompos;
+        document.getElementById("modalFrån").innerHTML = tmp;
+        document.getElementById("modalFrån2").innerHTML = tmp;
+        if(order.destpos == "Map selection")
+            {
+                tmp= order.destLatLong;
+            }
+            else tmp = order.destpos;
+        document.getElementById("modalTill").innerHTML = tmp;
+        document.getElementById("modalTill2").innerHTML = tmp;
+        myOrder = order;
+    }
 }
 
 accept.onclick = function() {
@@ -64,7 +66,8 @@ function resetTaxi()
 }
 function releaseRide()
 {
-    socket.emit("orderTaxi", myOrder);
+    socket.emit("finishOrder", myOrder.orderId);
+    socket.emit("resetOrder", myOrder);
     resetTaxi();
     modal.style.display = "none";
     modal2.style.display = "none";
